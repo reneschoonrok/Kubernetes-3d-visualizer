@@ -27,12 +27,13 @@ function loadinfo() {
         if (i < 6) {
           podinfo[j+3] = 5 + (i*3);
           podinfo[j+4] = 3 ; //rij links rechts
-        } else if (i < 12) {
+        } else{
+        //} else if (i < 12) {
           podinfo[j+3] = 5 + ((i-6)*3);
           podinfo[j+4] = 4 ; //rij links rechts
-        } else {
-          podinfo[j+3] = 5 + ((i-12)*3);
-          podinfo[j+4] = 5 ; //rij links rechts
+        //} else {
+        //  podinfo[j+3] = 5 + ((i-12)*3);
+        //  podinfo[j+4] = 5 ; //rij links rechts
         }
 
 
@@ -144,6 +145,34 @@ function loadinfo() {
                         }
 
         }, false );
+
+        element.addEventListener( 'contextmenu', function (event) {
+                     var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=10", true);
+                                xhttp.send();
+                                xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var response = xhttp.responseText;
+                                        // split by new line
+                                        var lines = [];
+                                        lines = response.split(/\n/);
+
+                                        detail_log1.innerHTML = 'Last 10 loglines:';
+                                        detail_log2.innerHTML = lines[0];
+                                        detail_log3.innerHTML = lines[1];
+                                        detail_log4.innerHTML = lines[2];
+                                        detail_log5.innerHTML = lines[3];
+                                        detail_log6.innerHTML = lines[4];
+                                        detail_log7.innerHTML = lines[5];
+                                        detail_log8.innerHTML = lines[6];
+                                        detail_log9.innerHTML = lines[7];
+                                        detail_log10.innerHTML = lines[8];
+                                        detail_log11.innerHTML = lines[9];
+
+                                    }
+                                }
+
+                }, false );
 
         var number = document.createElement( 'div' );
         number.textContent = podinfo[ i + 5 ];

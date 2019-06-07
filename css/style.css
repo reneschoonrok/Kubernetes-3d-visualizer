@@ -220,6 +220,36 @@
 					color: rgba(127,255,255,0.75);
 				}
 
+
+			#infomenu {
+            				position: absolute;
+            				bottom: 20px;
+            				width: 60%;
+            				right: 20px;
+            				text-align: left;
+            				//color: rgba(127,255,255,0.75);
+            }
+            .info-btn-group button {
+                display: block; /* Make the buttons appear below each other */
+
+                text-align: left;
+                //border-style: groove;
+
+                // color: rgba(127,255,255,0.75);
+                //outline: 1px solid rgba(214, 255, 35,0.75);
+            }
+
+
+			.button6 {
+				color: rgba(255, 248, 63,1);
+				background: transparent;
+				border: 0px;
+				padding: 3px 3px;
+				cursor: pointer;
+			}
+
+
+
 			#mymenu {
             				position: absolute;
             				bottom: 20px;
