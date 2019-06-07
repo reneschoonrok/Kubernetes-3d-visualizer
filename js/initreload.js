@@ -54,20 +54,20 @@ function init() {
     var texture3 = new THREE.TextureLoader().load( './img/kube4.png' );//glscene
 
 	var material = new THREE.MeshBasicMaterial( { map: texture, opacity: 0.7} );//glscene
-	material.transparent = true;
+	material.transparent = false;
 
     var material1 = new THREE.MeshBasicMaterial( { map: texture1, opacity: 0.7} );//glscene
-	material1.transparent = true;
+	material1.transparent = false;
 
 	var material2 = new THREE.MeshBasicMaterial( { map: texture2, opacity: 0.7} );//glscene
     material2.transparent = true;
 
     var material3 = new THREE.MeshBasicMaterial( { map: texture3, opacity: 0.7} );//glscene
-    material3.transparent = true;
+    material3.transparent = false;
 
 
 	cube = new THREE.Mesh( boxGeom, material );//glscene
-    cube.position.copy(new THREE.Vector3(-1060, 1060, 50));//glscene
+    cube.position.copy(new THREE.Vector3(-1060, 1180, 50));//glscene
 
 	cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene
     cube1.position.copy(new THREE.Vector3(-1020, 1260, 50));//glscene
