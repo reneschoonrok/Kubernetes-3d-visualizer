@@ -27,33 +27,16 @@
 			<button id="delreplica"  class="button1">Replica -</button>
 			<button id="refresh"  class="button1">Refresh</button>
 		</div>
-
+		<div class="info1-btn-group" id="info1menu">
+			<textarea id="areatext1" rows="15" cols="70" class="button6" style="overflow:hidden;resize:none"></textarea>
+		</div>
 		<div class="info-btn-group" id="infomenu">
-			<button id="detail_log1" class="button6"></button>
-			<button id="detail_log2" class="button6"></button>
-			<button id="detail_log3" class="button6"></button>
-			<button id="detail_log4" class="button6"></button>
-			<button id="detail_log5" class="button6"></button>
-			<button id="detail_log6" class="button6"></button>
-			<button id="detail_log7" class="button6"></button>
-			<button id="detail_log8" class="button6"></button>
-			<button id="detail_log9" class="button6"></button>
-			<button id="detail_log10" class="button6"></button>
-			<button id="detail_log11" class="button6"></button>
-			<button id="detail2" class="button6"></button>
+			<textarea id="areatext" rows="15" cols="110" class="button6" style="resize:none" ></textarea>
 		</div>
 
 		<div class="btn-group" id="mymenu">
 			<button id="detail0" class="button button3"></button>
-			<button id="detail1" class="button"></button>
-			<button id="detail2" class="button"></button>
-			<button id="detail3" class="button"></button>
-			<button id="detail4" class="button"></button>
-			<button id="detail5" class="button"></button>
-			<button id="detail6" class="button"></button>
-			<button id="detail7" class="button"></button>
-			<button id="detail8" class="button"></button>
-			<button id="detail9" class="button"></button>
+
 			<button id="detail12" class="button button3"></button>
 			<button id="detail10" class="button button4"></button>
 			<button id="detail11" class="button button2"></button>
@@ -95,6 +78,7 @@
 			var targets = { podinfo: [],  nodes: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [] };
 			var image = document.createElement( 'img' );
 			var mynamespace = 'kube-system';
+			var info = [];
 
 
 			var image = document.createElement('img');

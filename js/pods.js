@@ -124,19 +124,28 @@ function loadinfo() {
                             if (this.readyState == 4 && this.status == 200) {
                                 var response = JSON.parse(xhttp.responseText);
                                 //console.log(response);
-                                detail0.innerHTML = "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/" + jsonPath(response , "$.metadata.name");
-                                detail1.innerHTML = 'Podname           : ' + jsonPath(response , "$.metadata.name");
-                                detail2.innerHTML = 'Pod IP            : ' + jsonPath(response , "$.status.podIP");
-                                detail3.innerHTML = 'Podstatus         : ' + jsonPath(response , "$.status.phase");
-                                detail4.innerHTML = 'Images            : ' + jsonPath(response , "$.spec.containers[*].image");
+                                info[0] = "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/" + jsonPath(response , "$.metadata.name");
+
                                 var response5 = jsonPath(response , "$.spec.containers[*].image");
-                                detail5.innerHTML = 'Containers in pod : ' + response5.length;
-                                //var response2 = jsonPath(response , "$.status.phase");
-                                detail6.innerHTML = 'Container restarts: ' +  jsonPath(response ,"$.status.containerStatuses[*].restartCount");
-                                detail7.innerHTML = 'Containers ready  : ' + jsonPath(response , "$.status.containerStatuses[*].ready");
-                                detail8.innerHTML = 'Container ports   : ' + jsonPath(response , "$.spec.containers[*].ports[0].containerPort");
-                                detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
-                                detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
+
+                                areatext1.value= '';
+                                areatext1.value+='Podname         : ' + jsonPath(response , "$.metadata.name")+ "\r\n";
+                                areatext1.value+='Pod IP          : ' + jsonPath(response , "$.status.podIP")+ "\r\n";
+                                areatext1.value+='Podstatus       : ' + jsonPath(response , "$.status.phase")+ "\r\n";
+                                areatext1.value+='Pod starttime   : ' + jsonPath(response , "$.status.startTime")+ "\r\n";
+                                areatext1.value+='Images          : ' + jsonPath(response , "$.spec.containers[*].image")+ "\r\n";
+                                areatext1.value+='Containers #    : ' + response5.length+ "\r\n";
+                                areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$.status.containerStatuses[*].restartCount")+ "\r\n";
+                                areatext1.value+='Containers ready: ' + jsonPath(response , "$.status.containerStatuses[*].ready")+ "\r\n";
+                                areatext1.value+='Container ports : ' + jsonPath(response , "$.spec.containers[*].ports[0].containerPort")+ "\r\n";
+                                areatext1.value+='cpu requests    : ' + jsonPath(response , "$.spec.containers[*].resources.requests.cpu")+ "\r\n";
+                                areatext1.value+='memory requests : ' + jsonPath(response , "$.spec.containers[*].resources.requests.memory")+ "\r\n";
+                                areatext1.value+='cpu limits      : ' + jsonPath(response , "$.spec.containers[*].resources.limits.cpu")+ "\r\n";
+                                areatext1.value+='memory limits   : ' + jsonPath(response , "$.spec.containers[*].resources.limits.memory")+ "\r\n";
+
+
+                                //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
+                                //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
                                 detail10.innerHTML = 'Open spec';
                                 detail11.innerHTML = 'Delete pod';
                                 detail13.innerHTML = '';
@@ -148,26 +157,14 @@ function loadinfo() {
 
         element.addEventListener( 'contextmenu', function (event) {
                      var xhttp = new XMLHttpRequest();
-                                xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=10", true);
+                                xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
                                 xhttp.send();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
                                         var response = xhttp.responseText;
-                                        // split by new line
-                                        var lines = [];
-                                        lines = response.split(/\n/);
+                                        areatext.value += response
+                                        areatext.scrollTop = areatext.scrollHeight;
 
-                                        detail_log1.innerHTML = 'Last 10 loglines:';
-                                        detail_log2.innerHTML = lines[0];
-                                        detail_log3.innerHTML = lines[1];
-                                        detail_log4.innerHTML = lines[2];
-                                        detail_log5.innerHTML = lines[3];
-                                        detail_log6.innerHTML = lines[4];
-                                        detail_log7.innerHTML = lines[5];
-                                        detail_log8.innerHTML = lines[6];
-                                        detail_log9.innerHTML = lines[7];
-                                        detail_log10.innerHTML = lines[8];
-                                        detail_log11.innerHTML = lines[9];
 
                                     }
                                 }

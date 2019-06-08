@@ -62,7 +62,7 @@ function loadreplicasets() {
                 if (this.readyState == 4 && this.status == 200) {
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
-                    detail0.innerHTML = "http://localhost:8001/apis/apps/v1/namespaces/'+mynamespace+'/replicasets/" + jsonPath(response , "$.metadata.name");
+                    info[0] = "http://localhost:8001/apis/apps/v1/namespaces/"+mynamespace+"/replicasets/" + jsonPath(response , "$.metadata.name");
                     detail1.innerHTML = jsonPath(response , "$.metadata.name");
                     detail2.innerHTML = 'Replicas          : ' + jsonPath(response , "$.spec.replicas");
                     detail3.innerHTML = 'Readystatus       : ' + jsonPath(response , "$.status.readyReplicas");
