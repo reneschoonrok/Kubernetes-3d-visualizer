@@ -16,9 +16,7 @@ function reload() {
     objects.clear;
     scene.clear;
     targets.clear;
-
 }
-
 
 
 function init() {
