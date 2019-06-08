@@ -20,10 +20,6 @@ function loadnodes() {
          nodes[j+3] = 5 + (i*3);
          nodes[j+4] = 3 ; //rij links rechts
 
-         //nodes[j+5] = "-Ready: " + response7[i];
-         //nodes[j+6] = "-Image: " + response7[i];
-         //nodes[j+7] = "-Started at: " + response7[i];
-         //nodes[j+8] = response7[i];
          j = j + 9;
       }
    }

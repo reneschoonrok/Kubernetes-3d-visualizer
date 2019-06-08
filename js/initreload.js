@@ -28,7 +28,7 @@ function init() {
 
     scene = new THREE.Scene();
     sceneGl = new THREE.Scene(); //glscene
-
+    var speclink = '';
 
  image.addEventListener('load', function(event) {
 
@@ -122,15 +122,14 @@ function init() {
 
     var button = document.getElementById( 'detail10' );
     button.addEventListener( 'click', function () {
-        mylink = "http://localhost:8001/" +detail12.innerHTML
-        open( mylink, "_blank");
+        open( info[0], "_blank");
     }, false );
 
     var button = document.getElementById( 'detail11' );
     button.addEventListener( 'click', function () {
                 if (detail11.innerHTML=='Delete pod')
                 {
-                   var deleteobject = "http://localhost:8001" + detail12.innerHTML;
+                   var deleteobject = info[0];
                    var xhttp = new XMLHttpRequest();
                    xhttp.open("DELETE", deleteobject, true);
                    xhttp.send();
@@ -139,40 +138,19 @@ function init() {
 
     var buttonadd = document.getElementById( 'detail13' );
     buttonadd.addEventListener( 'click', function () {
-       if (buttonadd.innerHTML=='Add replica'){
-
-                var xhttp = new XMLHttpRequest();
-                  xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/replicasets/"+ detail1.innerHTML, true);
-                  xhttp.send();
-                  xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    var newreplicas = parseInt(detail5.innerHTML , 10)+ 1;
-                    var response1 = xhttp.responseText;
-                    var res = xhttp.responseText.replace('"replicas": '+ detail5.innerHTML , '"replicas": '+ newreplicas);
-                    var xhttp2 = new XMLHttpRequest();
-                                      xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/replicasets/"+ detail1.innerHTML, true);
-                                      xhttp2.setRequestHeader("Content-Type", "application/json");
-                                      xhttp2.send(res);
-                                      if (this.readyState == 4 && this.status == 200) {
-                                      test=1;
-                                      }
-                    var test = 1;
-                }
-             }
-                  }
 
              if (buttonadd.innerHTML=='Add one replica'){
 
                        var xhttp = new XMLHttpRequest();
-                         xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ detail1.innerHTML, true);
+                         xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ info[3], true);
                          xhttp.send();
                          xhttp.onreadystatechange = function() {
                          if (this.readyState == 4 && this.status == 200) {
-                           var newdeployments = parseInt(detail5.innerHTML , 10)+ 1;
+                           var newdeployments = parseInt(info[2] , 10)+ 1;
                            var response1 = xhttp.responseText;
-                           var res = xhttp.responseText.replace('"replicas": '+ detail5.innerHTML , '"replicas": '+ newdeployments);
+                           var res = xhttp.responseText.replace('"replicas": '+ info[2] , '"replicas": '+ newdeployments);
                            var xhttp2 = new XMLHttpRequest();
-                                             xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ detail1.innerHTML, true);
+                                             xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ info[3], true);
                                              xhttp2.setRequestHeader("Content-Type", "application/json");
                                              xhttp2.send(res);
                                              if (this.readyState == 4 && this.status == 200) {
@@ -188,40 +166,19 @@ function init() {
 
         var buttonreduce = document.getElementById( 'detail14' );
         buttonreduce.addEventListener( 'click', function () {
-           if (buttonreduce.innerHTML=='Reduce replica'){
-
-                    var xhttp = new XMLHttpRequest();
-                      xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/replicasets/"+ detail1.innerHTML, true);
-                      xhttp.send();
-                      xhttp.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                        var newreplicas = parseInt(detail5.innerHTML , 10)- 1;
-                        var response1 = xhttp.responseText;
-                        var res = xhttp.responseText.replace('"replicas": '+ detail5.innerHTML , '"replicas": '+ newreplicas);
-                        var xhttp2 = new XMLHttpRequest();
-                                          xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/replicasets/"+ detail1.innerHTML, true);
-                                          xhttp2.setRequestHeader("Content-Type", "application/json");
-                                          xhttp2.send(res);
-                                          if (this.readyState == 4 && this.status == 200) {
-                                          test=1;
-                                          }
-                        var test = 1;
-                    }
-                 }
-                      }
 
                  if (buttonreduce.innerHTML=='Reduce one replica'){
 
                            var xhttp = new XMLHttpRequest();
-                             xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ detail1.innerHTML, true);
+                             xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ info[3], true);
                              xhttp.send();
                              xhttp.onreadystatechange = function() {
                              if (this.readyState == 4 && this.status == 200) {
-                               var newdeployments = parseInt(detail5.innerHTML , 10)- 1;
+                               var newdeployments = parseInt(info[2] , 10)- 1;
                                var response1 = xhttp.responseText;
-                               var res = xhttp.responseText.replace('"replicas": '+ detail5.innerHTML , '"replicas": '+ newdeployments);
+                               var res = xhttp.responseText.replace('"replicas": '+ info[2], '"replicas": '+ newdeployments);
                                var xhttp2 = new XMLHttpRequest();
-                                                 xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ detail1.innerHTML, true);
+                                                 xhttp2.open("PUT", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/deployments/"+ info[3], true);
                                                  xhttp2.setRequestHeader("Content-Type", "application/json");
                                                  xhttp2.send(res);
                                                  if (this.readyState == 4 && this.status == 200) {

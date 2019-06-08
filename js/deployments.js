@@ -62,19 +62,17 @@ function loaddeployments() {
                 if (this.readyState == 4 && this.status == 200) {
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
-                    detail0.innerHTML = "http://localhost:8001/apis/apps/v1/namespaces/'+mynamespace+'/deployments/" + jsonPath(response , "$.metadata.name");
-                    detail1.innerHTML = jsonPath(response , "$.metadata.name");
-                    detail2.innerHTML = 'Replicas          : ' + jsonPath(response , "$.spec.replicas");
-                    detail3.innerHTML = 'Readystatus       : ' + jsonPath(response , "$.status.readyReplicas");
-                    detail4.innerHTML = 'Version            : ' + jsonPath(response , "$.metadata.labels.version");
-                    var response5 = '';
-                    detail5.innerHTML = jsonPath(response , "$.spec.replicas");
-                    //var response2 = jsonPath(response , "$.status.phase");
-                    detail6.innerHTML = '';
-                    detail7.innerHTML = '';
-                    detail8.innerHTML = 'Add deployment';
-                    detail9.innerHTML = 'Reduce deployment';
-                    detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
+                    info[0] = "http://localhost:8001/apis/apps/v1/namespaces/"+mynamespace+"/deployments/" + jsonPath(response , "$.metadata.name");
+                    info[1]= jsonPath(response , "$.metadata.selfLink");
+                    info[2]= jsonPath(response , "$.spec.replicas");
+                    info[3]= jsonPath(response , "$.metadata.name");
+
+                    areatext1.value= '';
+                    areatext1.value+='Replica name: ' + jsonPath(response , "$.metadata.name")+ "\r\n";
+                    areatext1.value+='Replica #   : ' + jsonPath(response , "$.spec.replicas")+ "\r\n";
+                    areatext1.value+='Readystatus : ' + jsonPath(response , "$.status.readyReplicas")+ "\r\n";
+                    areatext1.value+='Version     : ' + jsonPath(response , "$.metadata.labels.version")+ "\r\n";
+
                     detail10.innerHTML = 'Open spec';
                     detail11.innerHTML = ''; //dont delete deployments from here
                     detail13.innerHTML = 'Add one replica';

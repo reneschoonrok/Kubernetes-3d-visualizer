@@ -223,14 +223,15 @@
 
 			#infomenu {
             				position: absolute;
-            				bottom: 20px;
-            				width: 60%;
-            				right: 20px;
-            				text-align: left;
+            				bottom: 5px;
+            				//width: 60%;
+            				right: 5px;
+            				//text-align: left;
             				//color: rgba(127,255,255,0.75);
             }
             .info-btn-group button {
                 display: block; /* Make the buttons appear below each other */
+                right: 5px;
 
                 text-align: left;
                 //border-style: groove;
@@ -242,25 +243,56 @@
 
 			.button6 {
 				color: rgba(255, 248, 63,1);
+				background: rgba(0,0,0,0.65);
+				border: 0px;
+				padding: 3px 3px;
+				cursor: pointer;
+				right: 5px;
+				font-size: 14px;
+			}
+
+            #info1menu {
+            				position: absolute;
+            				bottom: 5px;
+            				//width: 60%;
+            				left: 120px;
+            				//text-align: left;
+            				//color: rgba(127,255,255,0.75);
+            }
+            .info1-btn-group button {
+                display: block; /* Make the buttons appear below each other */
+                right: 120px;
+
+                text-align: left;
+                //border-style: groove;
+
+                // color: rgba(127,255,255,0.75);
+                //outline: 1px solid rgba(214, 255, 35,0.75);
+            }
+
+
+			.button7 {
+				color: rgba(255, 248, 63,1);
 				background: transparent;
 				border: 0px;
 				padding: 3px 3px;
 				cursor: pointer;
+				right: 5px;
+				font-size: 14px;
 			}
 
 
-
 			#mymenu {
-            				position: absolute;
-            				bottom: 20px;
-            				width: 30%;
-            				left: 20px;
-            				text-align: left;
-            				//color: rgba(127,255,255,0.75);
+            	position: absolute;
+                bottom: 20px;
+            	width: 100;
+            	left: 20px;
+            	text-align: left;
+            	background: rgba(0,0,0,0.5);
+
             }
             .btn-group button {
                 display: block; /* Make the buttons appear below each other */
-
                 text-align: left;
                 //border-style: groove;
 
@@ -271,7 +303,8 @@
 
 			.button {
 				color: rgba(255, 248, 63,1);
-				background: transparent;
+				//background: transparent;
+
 				border: 0px;
 				padding: 3px 3px;
 				cursor: pointer;
