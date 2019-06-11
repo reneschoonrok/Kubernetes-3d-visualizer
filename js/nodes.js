@@ -8,7 +8,7 @@ function loadnodes() {
       var response = JSON.parse(xhttp.responseText);
 
       var response7 = jsonPath(response , "$..metadata.name");
-      console.log(response7);
+      //console.log(response7);
 
       var arrayLength = response7.length;
       var j = 0;
@@ -25,7 +25,7 @@ function loadnodes() {
    }
 
 
-   for ( var i = 0; i < nodes.length; i += 6 ) {
+   for ( var i = 0; i < nodes.length; i += 9 ) {
       var nodetype = document.createElement( 'div' );
       nodetype.className = 'element';
       nodetype.style.backgroundColor = nodes[ i + 2 ];

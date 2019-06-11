@@ -17,6 +17,8 @@
 		<script src="js/replicasets.js"></script>
 		<script src="js/deployments.js"></script>
 		<script src="js/initreload.js"></script>
+		<script src="js/ingresses.js"></script>
+		<script src="js/jquery-2.2.4.min.js"></script>
 
 		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>.</div>
 		<div id="container"></div>
@@ -54,7 +56,9 @@
 				"Deployments", "", "rgba(200, 7, 200,0.4)", 1, 5, " ",
 				" ", "", "rgba(200, 7, 200,0.4)", 1, 6, " ",
 				"Replicasets", "", "rgba(56, 124, 52,0.4)", 1, 7, " ",
-				" ", "", "rgba(56, 124, 52,0.4)", 1, 8, " "
+				" ", "", "rgba(56, 124, 52,0.4)", 1, 8, " ",
+				"Ingress", "", "rgba(237, 149, 61,0.4)", 1, 9, " ",
+				" ", "", "rgba(237, 149, 61,0.4)", 1, 10, " "
 			];
 			
 			var namespaces = [
@@ -68,6 +72,7 @@
 			var podinfo = [];
 			var replicaset = [];
 			var deployment = [];
+			var ingressinfo = [];
 			var camera, scene, renderer;
 			var controls;
 			var mesh;
@@ -76,6 +81,7 @@
 
 			var objects = [];
 			var targets = { podinfo: [],  nodes: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [] };
+			var longerlivables = { ingressinfo: []};
 			var image = document.createElement( 'img' );
 			var mynamespace = 'kube-system';
 			var info = [];
@@ -83,12 +89,49 @@
 
 			var image = document.createElement('img');
 						  image.src = './img/kubernetesword.png';
-	      var objectlogo = new THREE.CSS3DSprite(image.cloneNode());
+	     	var objectlogo = new THREE.CSS3DSprite(image.cloneNode());
+            var texture1 = new THREE.TextureLoader().load( './img/containerready.png' );//glscene
 
+        	var materialready = new THREE.MeshBasicMaterial( { map: texture1, opacity: 1} );//glscene
+        	const materialnotready = new THREE.MeshBasicMaterial({color: 0xFF0000,wireframe: true,});
 
+ 			var boxGeom1 = new THREE.CubeGeometry(55,20, 20);//glscene
+
+ 			//var plane1 = createPlane(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0));
+ 			//var cssObject = createCssObject(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 
 			init();
 			animate();
+
+
+  function createCssObject(w, h, position, rotation, url) {
+    var html = [
+      '<div style="width:' + w + 'px; height:' + h + 'px;">',
+      '<iframe src="' + url + '" width="' + w + '" height="' + h + '">',
+      '</iframe>',
+      '</div>'
+    ].join('\n');
+    var div = document.createElement('div');
+    $(div).html(html);
+    var cssObject = new THREE.CSS3DObject(div);
+    cssObject.position.x = position.x;
+    cssObject.position.y = position.y;
+    cssObject.position.z = position.z;
+    cssObject.rotation.x = rotation.x;
+    cssObject.rotation.y = rotation.y;
+    cssObject.rotation.z = rotation.z;
+    return cssObject;
+  }
+
+
+  function create3dPage(w, h, position, rotation, url) {
+   var cssObject = createCssObject(
+        w, h,
+        position,
+        rotation,
+        url);
+    scene.add(cssObject);
+  }
 
 			function onWindowResize() {
 
@@ -108,38 +151,38 @@
 			}
 			
 			function render() {
+
 			if ((cube.rotation.x < -6.25)&&(rotateswitch == 1))
 			{
 			    rotateswitch = 0;
 			    cube.rotation.y =0;
 			    //cube1.rotation.y =0;
-			    //cube2.rotation.y =0;
-			    //cube3.rotation.y =0;
+
 			 };
 			 if ((cube.rotation.y < -6.25)&&(rotateswitch == 0))
 			 {
 			    rotateswitch = 1;
 			    cube.rotation.x =0;
 			    //cube1.rotation.x =0;
-			    //cube2.rotation.x =0;
-			    //cube3.rotation.x =0;
+
 
 			 };
 
 				if (rotateswitch == 1) {
 				  cube.rotation.x -=0.02;
-			      cube1.rotation.x -=0.02;
-			      cube2.rotation.x +=0.02;
-			      cube3.rotation.x +=0.02;
+			      //cube1.rotation.x -=0.02;
+
 			    }
 			    else {
 				  cube.rotation.y -=0.02;
-			      cube1.rotation.y +=0.02;
-			      cube2.rotation.y -=0.02;
-			      cube3.rotation.y +=0.02;
+			      //cube1.rotation.y +=0.02;
+
 			    };
 
 			      scene.add(objectlogo);
+
+			    // scene.add(cssObject);
+
 
 			      objects.push(objectlogo);
 			      rendererGl.render(sceneGl, camera);
@@ -153,17 +196,27 @@
 			function myRefresh() {
 		
 				reload();
-				loadnodes();
 				loadinfo();
-
+				loadnodes();
 				loadreplicasets();
 				loaddeployments();
+				loadingresses();
+
+				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
+				nodes.splice(0, nodes.length)
 				podinfo.splice(0, podinfo.length)
 				replicaset.splice(0, replicaset.length)
 				deployment.splice(0, deployment.length)
+			}
 
+			var intervalID = window.setInterval(myRefreshIngress, 10000);
+			function myRefreshIngress() {
+			//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
 
 			}
+
+
+
 
 		</script>
 	</body>
