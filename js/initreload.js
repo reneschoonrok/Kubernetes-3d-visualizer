@@ -5,17 +5,21 @@ function reload() {
     while(scene.children.length > 0){
         scene.remove(scene.children[0]);
     }
+
+    while(sceneGl.children.length > 1){
+         sceneGl.remove(sceneGl.children[1]);
+    }
     for (var member in resourcetypes) delete objects[resourcetypes];
     for (var member in nodes) delete objects[nodes];
-    for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
     for (var member in targets.nodes) delete objects[targets.nodes];
 
     for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
     for (var member in targets.replicaset) delete objects[targets.replicaset];
-    for (var member in targets.depolyment) delete objects[targets.deployment];
+    for (var member in targets.deployment) delete objects[targets.deployment];
     objects.clear;
     scene.clear;
     targets.clear;
+    sceneGl.clear;
 }
 
 
@@ -27,6 +31,7 @@ function init() {
     scene = new THREE.Scene();
     sceneGl = new THREE.Scene(); //glscene
     var speclink = '';
+
 
  image.addEventListener('load', function(event) {
 
@@ -42,44 +47,20 @@ function init() {
     var boxGeom = new THREE.CubeGeometry(300, 300, 300);//glscene
     var texture = new THREE.TextureLoader().load( './img/Kubernetes.png' );//glscene
 
-    var boxGeom1 = new THREE.CubeGeometry(200,200, 200);//glscene
-    var texture1 = new THREE.TextureLoader().load( './img/kube2.png' );//glscene
 
-    var boxGeom2 = new THREE.CubeGeometry(200,200, 200);//glscene
-    var texture2 = new THREE.TextureLoader().load( './img/kube3.png' );//glscene
-
-    var boxGeom3 = new THREE.CubeGeometry(200,200, 200);//glscene
-    var texture3 = new THREE.TextureLoader().load( './img/kube4.png' );//glscene
+    //var boxGeom1 = new THREE.CubeGeometry(55,20, 20);//glscene
+    //var texture1 = new THREE.TextureLoader().load( './img/container1.png' );//glscene
 
 	var material = new THREE.MeshBasicMaterial( { map: texture, opacity: 0.7} );//glscene
 	material.transparent = false;
-
-    var material1 = new THREE.MeshBasicMaterial( { map: texture1, opacity: 0.7} );//glscene
-	material1.transparent = false;
-
-	var material2 = new THREE.MeshBasicMaterial( { map: texture2, opacity: 0.7} );//glscene
-    material2.transparent = true;
-
-    var material3 = new THREE.MeshBasicMaterial( { map: texture3, opacity: 0.7} );//glscene
-    material3.transparent = false;
-
+	//var material1 = new THREE.MeshBasicMaterial( { map: texture1, opacity: 0.7} );//glscene
+    //material1.transparent = false;
 
 	cube = new THREE.Mesh( boxGeom, material );//glscene
     cube.position.copy(new THREE.Vector3(-1060, 1180, 50));//glscene
 
-	cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene
-    cube1.position.copy(new THREE.Vector3(-1020, 1260, 50));//glscene
-
-    cube2 = new THREE.Mesh( boxGeom2, material2 );//glscene
-    cube2.position.copy(new THREE.Vector3(-1260,1020, 50));//glscene
-
-    cube3 = new THREE.Mesh( boxGeom3, material3 );//glscene
-    cube3.position.copy(new THREE.Vector3(-1020,1020, 50));//glscene
-
-//cube1.rotation.x +=0.3;
-    //cube.rotation.copy(Math.PI / 6);//glscene
-
-
+	//cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene
+    //cube1.position.copy(new THREE.Vector3(-660, 400, 0));//glscene
 
     sceneGl.add(cube);//glscene
     //sceneGl.add(cube1);//glscene
@@ -108,10 +89,12 @@ function init() {
     controls.maxDistance = 6000;
     controls.addEventListener( 'change', render );
 
+	//create3dPage( 100, 100, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 45 * Math.PI / 180, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
+
     var button = document.getElementById( 'refresh' );
     button.addEventListener( 'click', function () {
         reload();
-        loadnodes();
+        //loadnodes();
         loadinfo();
         loadreplicasets
         loaddeployments

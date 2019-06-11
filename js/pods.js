@@ -11,11 +11,11 @@ function loadinfo() {
     var response2 = jsonPath(response , "$..status.phase");
     var response3 = jsonPath(response , "$..status.containerStatuses[0].restartCount");
     var response4 = jsonPath(response , "$..status.containerStatuses[0].ready");
-    var response5 = jsonPath(response , "$..spec.containers[*].image");
+    var response5 = jsonPath(response , "$..spec.containers[0].image");
     var response6 = jsonPath(response , "$..status.startTime");
     var response7 = jsonPath(response , "$..metadata.name");
     var response8 = jsonPath(response , "$..status.phase");
-    console.log(response7);
+    //console.log(response7);
 
     var arrayLength = response1.length;
     var j = 0;
@@ -36,9 +36,8 @@ function loadinfo() {
         //  podinfo[j+4] = 5 ; //rij links rechts
         }
 
-
         podinfo[j+5] = "-Ready: " + response4[i];
-        podinfo[j+6] = "-Image: " + response5[i];
+        podinfo[j+6] = "-Image: " + response5.length;
         //podinfo[j+7] = "-Started at: " + response6[i];
         podinfo[j+7] = "-Podstatus: " + response8[i];
         podinfo[j+8] = response7[i];
@@ -178,7 +177,6 @@ function loadinfo() {
         if ( number.textContent == "-Ready: true") { number.className = 'numberbest';}
         element.appendChild( number );
 
-
         var symbol = document.createElement( 'div' );
         symbol.className = 'symbol';
         symbol.textContent = podinfo[ i ];
@@ -231,13 +229,26 @@ function loadinfo() {
 
         var podstatus = document.createElement( 'div' );
         podstatus.textContent = podinfo[ i + 7 ];
-        podstatus.className = 'podbad';
-        if ( podstatus.textContent == "-Podstatus: Running") { podstatus.className = 'podgood';};
+
+        if ( podstatus.textContent == "-Podstatus: Running") {
+           podstatus.className = 'podgood';
+           cube1 = new THREE.Mesh( boxGeom1, materialready );//glscene
+        } else {
+           podstatus.className = 'podbad';
+           cube1 = new THREE.Mesh( boxGeom1, materialnotready );//glscene
+
+        };
         element.appendChild( podstatus );
+
+
 
         var object = new THREE.CSS3DObject( element );
         object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1330;
         object.position.y = - ( podinfo[ i + 4 ] * 180 ) + 990;
+
+        cube1.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
+        sceneGl.add(cube1);//glscene
+
 
         scene.add( object );
 
