@@ -8,7 +8,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     var response = JSON.parse(xhttp.responseText);
     //console.log(response);
     var response1 = jsonPath(response , "$.items[*].metadata.name");
-    var response2 = jsonPath(response , "$.items[*].spec.rules.host");
+    var response2 = jsonPath(response , "$.items[*].spec.rules[0].host");
     var response3 = jsonPath(response , " ");
     var response4 = jsonPath(response , " ");
     var response5 = jsonPath(response , " ");
@@ -21,18 +21,18 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     var j = 0;
     for (var i = 0; i < arrayLength; i++) {
         ingressinfo[j] = response1[i];
-        ingressinfo[j+1] = "-Host: " + response2[i];
+        ingressinfo[j+1] = "-Url: " + response2[i];
         ingressinfo[j+2] = "rgba(56, 124, 52,0.2)"; //background of ingressinfos
 
         if (i < 6) {
           ingressinfo[j+3] = 5 + (i*3);
-          ingressinfo[j+4] = 3 ; //rij links rechts
+          ingressinfo[j+4] = 7 ; //rij links rechts
         } else if (i < 12) {
           ingressinfo[j+3] = 5 + ((i-6)*3);
-          ingressinfo[j+4] = 4 ; //rij links rechts
+          ingressinfo[j+4] = 8 ; //rij links rechts
         } else {
           ingressinfo[j+3] = 5 + ((i-12)*3);
-          ingressinfo[j+4] = 5 ; //rij links rechts
+          ingressinfo[j+4] = 9 ; //rij links rechts
         }
 
 

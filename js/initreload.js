@@ -84,8 +84,8 @@ function init() {
 
 
     controls = new THREE.TrackballControls( camera, renderer.domElement );
-    controls.rotateSpeed = 0.5;
-    controls.minDistance = 500;
+    controls.rotateSpeed = 0.8;
+    controls.minDistance = 100;
     controls.maxDistance = 6000;
     controls.addEventListener( 'change', render );
 
@@ -94,10 +94,11 @@ function init() {
     var button = document.getElementById( 'refresh' );
     button.addEventListener( 'click', function () {
         reload();
-        //loadnodes();
+        loadnodes();
         loadinfo();
-        loadreplicasets
-        loaddeployments
+        loadreplicasets();
+        loaddeployments();
+        loadingresses();
 
     }, false );
 

@@ -97,6 +97,9 @@
 
  			var boxGeom1 = new THREE.CubeGeometry(55,20, 20);//glscene
 
+ 			//var plane1 = createPlane(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0));
+ 			//var cssObject = createCssObject(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
+
 			init();
 			animate();
 
@@ -120,39 +123,15 @@
     return cssObject;
   }
 
-  function createPlane(w, h, position, rotation) {
-    var material = new THREE.MeshBasicMaterial({
-      color: 0x51c946,
-      opacity: 0.0,
-      side: THREE.DoubleSide
-    });
-    var geometry = new THREE.PlaneGeometry(w, h);
-    var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.x = position.x;
-    mesh.position.y = position.y;
-    mesh.position.z = position.z;
-    mesh.rotation.x = rotation.x;
-    mesh.rotation.y = rotation.y;
-    mesh.rotation.z = rotation.z;
-    return mesh;
-  }
 
   function create3dPage(w, h, position, rotation, url) {
-    var plane = createPlane(
-        w, h,
-        position,
-        rotation);
-    sceneGl.add(plane);
-    var cssObject = createCssObject(
+   var cssObject = createCssObject(
         w, h,
         position,
         rotation,
         url);
     scene.add(cssObject);
   }
-
-
-
 
 			function onWindowResize() {
 
@@ -202,6 +181,9 @@
 
 			      scene.add(objectlogo);
 
+			    // scene.add(cssObject);
+
+
 			      objects.push(objectlogo);
 			      rendererGl.render(sceneGl, camera);
 				renderer.render( scene, camera );
@@ -214,24 +196,27 @@
 			function myRefresh() {
 		
 				reload();
-
 				loadinfo();
 				loadnodes();
 				loadreplicasets();
 				loaddeployments();
 				loadingresses();
 
-//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
-
-
+				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
 				nodes.splice(0, nodes.length)
 				podinfo.splice(0, podinfo.length)
 				replicaset.splice(0, replicaset.length)
 				deployment.splice(0, deployment.length)
+			}
 
-
+			var intervalID = window.setInterval(myRefreshIngress, 10000);
+			function myRefreshIngress() {
+			//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
 
 			}
+
+
+
 
 		</script>
 	</body>
