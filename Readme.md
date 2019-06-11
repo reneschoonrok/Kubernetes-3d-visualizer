@@ -6,7 +6,7 @@ You can also interact with the cluster: delete pods, increase/decrease replicas 
 
 Also working with Minikube. <br/>
 
-![](/k8s4.gif)
+![](/k8s5.gif)
 
 ## Prerequisites
 
@@ -18,9 +18,6 @@ Also working with Minikube. <br/>
 Either start the html locally or run my docker image (consists of nginx and this deployment): <br/>
 ### docker run -p 80:80 reneschoonrok/kubernetes-3d-visualizer:latest <br/>
 then goto localhost:80 If your chrome is correctly started (see above) it should work. <br/>
-
-## 7-6-2019 added: see last 10 loglines from pod with rightclicking pod. <br/>
-![](/k8slog.gif)
 
 ### Getting Started
 
