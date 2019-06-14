@@ -212,12 +212,12 @@
 				deployment.splice(0, deployment.length)
 			}
 
-			var intervalID = window.setInterval(myRefreshIngress,5000);
+			var intervalID = window.setInterval(myRefreshIngress,20000);
 			function myRefreshIngress() {
 			   var xpos = 0;
 			   for ( var i = 0; i < ingressurls.length; i += 1 ) {
-			      create3dPage( 400, 600, new THREE.Vector3(-650+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
-				  xpos +=410;
+			      create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
+				  xpos +=415;
 			   }
 			}
 		</script>
