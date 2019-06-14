@@ -57,8 +57,7 @@
 				" ", "", "rgba(200, 7, 200,0.4)", 1, 6, " ",
 				"Replicasets", "", "rgba(56, 124, 52,0.4)", 1, 7, " ",
 				" ", "", "rgba(56, 124, 52,0.4)", 1, 8, " ",
-				"Ingress", "", "rgba(237, 149, 61,0.4)", 1, 9, " ",
-				" ", "", "rgba(237, 149, 61,0.4)", 1, 10, " "
+				"Ingress", "", "rgba(237, 149, 61,0.4)", 1, 9, " "
 			];
 			
 			var namespaces = [
@@ -73,6 +72,7 @@
 			var replicaset = [];
 			var deployment = [];
 			var ingressinfo = [];
+			var ingressurls = [];
 			var camera, scene, renderer;
 			var controls;
 			var mesh;
@@ -99,7 +99,7 @@
 
  			//var plane1 = createPlane(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0));
  			//var cssObject = createCssObject(300, 500,new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
-
+			//var mycssObject = create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 			init();
 			animate();
 
@@ -114,6 +114,7 @@
     var div = document.createElement('div');
     $(div).html(html);
     var cssObject = new THREE.CSS3DObject(div);
+    cssObject.castShadow = true;
     cssObject.position.x = position.x;
     cssObject.position.y = position.y;
     cssObject.position.z = position.z;
@@ -131,6 +132,7 @@
         rotation,
         url);
     scene.add(cssObject);
+    return cssObject;
   }
 
 			function onWindowResize() {
@@ -181,10 +183,11 @@
 
 			      scene.add(objectlogo);
 
-			    // scene.add(cssObject);
+			     //scene.add(mycssObject);
 
 
 			      objects.push(objectlogo);
+			      //objects.push(mycssObject);
 			      rendererGl.render(sceneGl, camera);
 				renderer.render( scene, camera );
 
@@ -202,22 +205,21 @@
 				loaddeployments();
 				loadingresses();
 
-				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
+				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 				nodes.splice(0, nodes.length)
 				podinfo.splice(0, podinfo.length)
 				replicaset.splice(0, replicaset.length)
 				deployment.splice(0, deployment.length)
 			}
 
-			var intervalID = window.setInterval(myRefreshIngress, 10000);
+			var intervalID = window.setInterval(myRefreshIngress,5000);
 			function myRefreshIngress() {
-			//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://grafana.k8s.nn-o-hof-dt-k8s.aws.insim.biz/');
-
+			   var xpos = 0;
+			   for ( var i = 0; i < ingressurls.length; i += 1 ) {
+			      create3dPage( 400, 600, new THREE.Vector3(-650+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
+				  xpos +=410;
+			   }
 			}
-
-
-
-
 		</script>
 	</body>
 </html>
