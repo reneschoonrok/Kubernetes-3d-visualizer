@@ -120,6 +120,9 @@ function init() {
 
     var buttonadd = document.getElementById( 'detail13' );
     buttonadd.addEventListener( 'click', function () {
+             if (buttonadd.innerHTML=='Open url'){
+                    open( info[1], "_blank");
+             }
 
              if (buttonadd.innerHTML=='Add one replica'){
 
