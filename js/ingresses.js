@@ -55,6 +55,22 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         element.style.backgroundColor = ingressinfo[ i + 2 ];
 
 
+
+
+        element.addEventListener( 'click', function (event) {
+
+             //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
+             //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
+             detail10.innerHTML = 'Open spec';
+             detail11.innerHTML = 'Delete pod';
+             detail13.innerHTML = '';
+             detail14.innerHTML = '';
+        }, false );
+
+        element.addEventListener( 'contextmenu', function (event) {
+
+        }, false );
+
         var number = document.createElement( 'div' );
         number.textContent = ingressinfo[ i + 5 ];
         if ( number.textContent == "-Ready: false") { number.className = 'numberbad';};
