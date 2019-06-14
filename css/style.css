@@ -132,6 +132,15 @@
 					color: rgba(102, 255, 51,1);
 				}
 
+				.element .ingressdetails {
+				    width: 400px;
+					position: absolute;
+					top: 105px;
+					left: 5px;
+					font-size: 15px;
+					color: rgba(102, 255, 51,1);
+				}
+
 
 
 				.element .symbol {

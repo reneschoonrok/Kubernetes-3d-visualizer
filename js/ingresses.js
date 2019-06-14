@@ -58,17 +58,36 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
 
 
         element.addEventListener( 'click', function (event) {
+           xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/"+event.currentTarget.childNodes[1].innerHTML, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(xhttp.responseText);
+                    //console.log(response);
+                    info[0] = "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/" + jsonPath(response , "$.metadata.name");
+                    info[1] = "https://"+jsonPath(response , '$.spec.rules[0].host');
+                    var response5 = jsonPath(response , "$.spec.containers[*].image");
 
-             //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
-             //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-             detail10.innerHTML = 'Open spec';
-             detail11.innerHTML = 'Delete pod';
-             detail13.innerHTML = '';
-             detail14.innerHTML = '';
+                    areatext1.value= '';
+                    areatext1.value+='Ingressname     : ' + jsonPath(response , "$.metadata.name")+ "\r\n";
+                    areatext1.value+='Url             : ' + jsonPath(response , '$.spec.rules[0].host')+ "\r\n";
+                    //areatext1.value+='Scheme          : ' + jsonPath(response , "$.metadata.annotations[2]")+ "\r\n";
+                    //areatext1.value+='Target-type     : ' + jsonPath(response , "$.metadata.annotations[3]")+ "\r\n";
+                    //areatext1.value+='ingress class   : ' + jsonPath(response , "$.metadata.annotations[4]")+ "\r\n";
+
+
+                    //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
+                    //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
+                    detail10.innerHTML = 'Open spec';
+                    detail11.innerHTML = '';
+                    detail13.innerHTML = 'Open url';
+                    detail14.innerHTML = '';
+                 }
+             }
         }, false );
 
         element.addEventListener( 'contextmenu', function (event) {
-
+                    open( info[1], "_blank");
         }, false );
 
         var number = document.createElement( 'div' );
@@ -114,7 +133,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         ingressreplicaname.align = ingressinfo[ i + 8 ];
         details.appendChild(ingressreplicaname)
 
-        details.className = 'details';
+        details.className = 'ingressdetails';
         details.innerHTML = ingressinfo[ i + 1 ];
         details.align = ingressinfo[ i + 6 ];
         details.title = ingressinfo[ i + 7 ];
