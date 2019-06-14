@@ -249,7 +249,6 @@ function loadinfo() {
         cube1.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
         sceneGl.add(cube1);//glscene
 
-
         scene.add( object );
 
         objects.push( object );

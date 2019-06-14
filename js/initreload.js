@@ -2,8 +2,11 @@
 function reload() {
     targets = { podinfo: [],  nodes: [], resourcetypes: [],  namespaces: [] };
     objects = [];
-    while(scene.children.length > 0){
-        scene.remove(scene.children[0]);
+
+    for (var i = scene.children.length-1; i > -1; i -= 1){
+       if (scene.children[i].castShadow == false){
+          scene.remove(scene.children[i]);
+        };
     }
 
     while(sceneGl.children.length > 1){
