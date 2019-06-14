@@ -15,8 +15,6 @@ Also working with Minikube. <br/>
 -Run chrome with some extra flags to prevent CORS errors. Otherwise it will not show things. <br/>
  ("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp") <br/>
 
-Either start the html locally or run my docker image (consists of nginx and this deployment): <br/>
-### docker run -p 80:80 reneschoonrok/kubernetes-3d-visualizer:latest <br/>
 then goto localhost:80 If your chrome is correctly started (see above) it should work. <br/>
 
 ### Getting Started
