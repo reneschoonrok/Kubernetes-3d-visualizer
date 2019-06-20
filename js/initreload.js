@@ -15,7 +15,6 @@ function reload() {
     for (var member in resourcetypes) delete objects[resourcetypes];
     for (var member in nodes) delete objects[nodes];
     for (var member in targets.nodes) delete objects[targets.nodes];
-
     for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
     for (var member in targets.replicaset) delete objects[targets.replicaset];
     for (var member in targets.deployment) delete objects[targets.deployment];
@@ -96,12 +95,12 @@ function init() {
 
     var button = document.getElementById( 'refresh' );
     button.addEventListener( 'click', function () {
-        reload();
-        loadnodes();
-        loadinfo();
-        loadreplicasets();
-        loaddeployments();
-        loadingresses();
+        //reload();
+        //loadinfo();
+        //loadreplicasets();
+        //loaddeployments();
+        //loadingresses();
+        //loadnodes();
 
     }, false );
 

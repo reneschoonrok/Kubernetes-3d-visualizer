@@ -43,7 +43,7 @@ function loadinfo() {
         podinfo[j+8] = response7[i];
         j = j + 9;
     }
-    console.log(podinfo);
+    //console.log(podinfo);
   }
 };
 

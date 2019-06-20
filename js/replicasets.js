@@ -15,7 +15,7 @@ function loadreplicasets() {
     var response6 = jsonPath(response , " ");
     var response7 = jsonPath(response , " ");
     var response8 = jsonPath(response , " ");
-    console.log(response7);
+    //console.log(response7);
 
     var arrayLength = response1.length;
     var j = 0;
@@ -43,7 +43,7 @@ function loadreplicasets() {
         replicaset[j+8] = response7[i];
         j = j + 9;
     }
-    console.log(replicaset);
+    //console.log(replicaset);
   }
 };
 
