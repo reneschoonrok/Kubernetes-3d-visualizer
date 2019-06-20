@@ -16,7 +16,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     var response6 = jsonPath(response , " ");
     var response7 = jsonPath(response , " ");
     var response8 = jsonPath(response , " ");
-    console.log(response7);
+    //console.log(response7);
 
     var arrayLength = response1.length;
     var j = 0;
@@ -37,7 +37,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         ingressinfo[j+8] = response7[i];
         j = j + 9;
     }
-    console.log(ingressinfo);
+    //console.log(ingressinfo);
   }
 };
 
@@ -59,7 +59,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
                     info[0] = "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/" + jsonPath(response , "$.metadata.name");
-                    info[1] = "https://"+jsonPath(response , '$.spec.rules[0].host');
+                    info[1] = "http://"+jsonPath(response , '$.spec.rules[0].host');
                     var response5 = jsonPath(response , "$.spec.containers[*].image");
 
                     areatext1.value= '';
@@ -153,6 +153,10 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         scene.add( object );
 
         objects.push( object );
+
+        var runner = new THREE.Mesh(runnerGeometry, runnerMaterial);
+        runner.position.set(object.position.x+140,object.position.y-55,0);
+        sceneGl.add(runner);
 
 
 
