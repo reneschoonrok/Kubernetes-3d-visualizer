@@ -6,7 +6,7 @@ You can also interact with the cluster: delete pods, increase/decrease replicas 
 
 Also working with Minikube. <br/>
 
-![](/k8s5.gif)
+![](/k8s6.gif)
 
 ## Prerequisites
 

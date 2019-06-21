@@ -46,7 +46,7 @@ function init() {
 
 			  }, false);
 
-    var boxGeom = new THREE.CubeGeometry(300, 300, 300);//glscene
+    var boxGeom = new THREE.CubeGeometry(200, 200, 200);//glscene
     var texture = new THREE.TextureLoader().load( './img/Kubernetes.png' );//glscene
 
 
@@ -59,7 +59,7 @@ function init() {
     //material1.transparent = false;
 
 	cube = new THREE.Mesh( boxGeom, material );//glscene
-    cube.position.copy(new THREE.Vector3(-1060, 1180, 50));//glscene
+    cube.position.copy(new THREE.Vector3(-1060, 1080, 50));//glscene
 
 	//cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene
     //cube1.position.copy(new THREE.Vector3(-660, 400, 0));//glscene
