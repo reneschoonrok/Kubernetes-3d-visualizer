@@ -59,7 +59,12 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
                     info[0] = "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/" + jsonPath(response , "$.metadata.name");
-                    info[1] = "http://"+jsonPath(response , '$.spec.rules[0].host');
+                    if (httpsingress.checked){
+                       info[1] = "https://"+jsonPath(response , '$.spec.rules[0].host');
+                    } else {
+                       info[1] = "http://"+jsonPath(response , '$.spec.rules[0].host');
+                    };
+
                     var response5 = jsonPath(response , "$.spec.containers[*].image");
 
                     areatext1.value= '';
