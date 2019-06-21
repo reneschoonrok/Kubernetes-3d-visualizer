@@ -1,6 +1,6 @@
 
 function reload() {
-    targets = { podinfo: [],  nodes: [], resourcetypes: [],  namespaces: [] };
+    targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [] };
     objects = [];
 
     for (var i = scene.children.length-1; i > -1; i -= 1){
@@ -13,8 +13,8 @@ function reload() {
          sceneGl.remove(sceneGl.children[1]);
     }
     for (var member in resourcetypes) delete objects[resourcetypes];
-    for (var member in nodes) delete objects[nodes];
-    for (var member in targets.nodes) delete objects[targets.nodes];
+    for (var member in nodeinfo) delete objects[nodeinfo];
+    for (var member in targets.nodeinfo) delete objects[targets.nodeinfo];
     for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
     for (var member in targets.replicaset) delete objects[targets.replicaset];
     for (var member in targets.deployment) delete objects[targets.deployment];

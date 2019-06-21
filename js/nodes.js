@@ -13,42 +13,42 @@ function loadnodes() {
       var arrayLength = response7.length;
       var j = 0;
       for (var i = 0; i < arrayLength; i++) {
-         nodes[j] = response7[i];
-         nodes[j+1] =response7[i];
-         nodes[j+2] = "rgba(36, 61, 114,0.1)"; //nodes background color
+         nodeinfo[j] = response7[i];
+         nodeinfo[j+1] =response7[i];
+         nodeinfo[j+2] = "rgba(36, 61, 114,0.1)"; //nodes background color
 
-         nodes[j+3] = 5 + (i*3);
-         nodes[j+4] = 3 ; //rij links rechts
+         nodeinfo[j+3] = 5 + (i*3);
+         nodeinfo[j+4] = 3 ; //rij links rechts
 
          j = j + 9;
       }
    }
+};
 
-
-   for ( var i = 0; i < nodes.length; i += 9 ) {
+   for ( var i = 0; i < nodeinfo.length; i += 9 ) {
       var element = document.createElement( 'div' );
       element.className = 'element';
-      element.style.backgroundColor = nodes[ i + 2 ];
+      element.style.backgroundColor = nodeinfo[ i + 2 ];
 
       var number = document.createElement( 'div' );
       number.className = 'number';
-      number.textContent = nodes[ i + 5 ];
+      number.textContent = nodeinfo[ i + 5 ];
       element.appendChild( number );
 
       var symbol = document.createElement( 'div' );
       symbol.className = 'symbol';
-      symbol.textContent = nodes[ i ];
+      symbol.textContent = nodeinfo[ i ];
       element.appendChild( symbol );
 
       var details = document.createElement( 'div' );
       details.className = 'details';
-      details.id = nodes[ i ];
+      details.id = nodeinfo[ i ];
 
       element.appendChild( details );
 
       var object = new THREE.CSS3DObject( element );
-      object.position.x = object.position.x = ( nodes[ i + 3 ] * 140 ) - 1330;
-      object.position.y = - ( nodes[ i + 4 ] * 180 ) + 1350;
+      object.position.x = object.position.x = ( nodeinfo[ i + 3 ] * 140 ) - 1330;
+      object.position.y = - ( nodeinfo[ i + 4 ] * 180 ) + 1350;
       scene.add( object );
       objects.push( object );
 
@@ -88,4 +88,4 @@ function loadnodes() {
 
     }
 }
-};
+

@@ -68,7 +68,7 @@
 				"tst", "namespace", "rgba(0,127,127,0.2)", 14, 2, " "
 			];
 
-			var nodes = [];
+			var nodeinfo = [];
 			var podinfo = [];
 			var replicaset = [];
 			var deployment = [];
@@ -81,7 +81,7 @@
 			var rotateswitch = 1;
 
 			var objects = [];
-			var targets = { podinfo: [],  nodes: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [] };
+			var targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [] };
 			var longerlivables = { ingressinfo: []};
 			var image = document.createElement( 'img' );
 			var mynamespace = 'kube-system';
@@ -248,22 +248,22 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 
 			}
 			
-			var intervalID = window.setInterval(myRefresh, 1000);
+			var intervalID = window.setInterval(myRefresh, 1500);
 
 			function myRefresh() {
 		
 				reload();
 				loadinfo();
-				loadreplicasets();
+				//loadreplicasets();
 				loaddeployments();
 				loadingresses();
 				loadnodes();
 				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 
 				podinfo.splice(0, podinfo.length)
-				replicaset.splice(0, replicaset.length)
+				//replicaset.splice(0, replicaset.length)
 				deployment.splice(0, deployment.length)
-				nodes.splice(0, nodes.length)
+				nodeinfo.splice(0, nodeinfo.length)
 				ingressinfo.splice(0, ingressinfo.length)
 			}
 
