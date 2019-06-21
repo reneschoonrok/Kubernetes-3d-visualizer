@@ -105,8 +105,8 @@
 	var runner = new THREE.Mesh(runnerGeometry, runnerMaterial);
 	runner.position.set(-100,25,0);
 
-	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/server6.png' );
-	nodetexture = new TextureAnimator( runner2Texture, 6, 1, 6, 250 ); // texture, #horiz, #vert, #total, duration.
+	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/server12.png' );
+	nodetexture = new TextureAnimator( runner2Texture, 12, 1, 12, 175 ); // texture, #horiz, #vert, #total, duration.
 	var runner2Material = new THREE.MeshBasicMaterial( { map: runner2Texture, side:THREE.DoubleSide } );
 	var runner2Geometry = new THREE.PlaneGeometry(100,42, 1, 1);
 	var runner2 = new THREE.Mesh(runner2Geometry, runnerMaterial);
