@@ -20,7 +20,7 @@
 		<script src="js/ingresses.js"></script>
 		<script src="js/jquery-2.2.4.min.js"></script>
 
-		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress<br></div>
+		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress. <input type="checkbox" id="httpsingress" value="true" class="button button4" checked>https alb<br></div>
 
 
 		<div id="container"></div>
@@ -278,7 +278,12 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 
 			      var xpos = 0;
 			      for ( var i = 0; i < ingressurls.length; i += 1 ) {
-			      create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'http://'+ingressurls[i]);
+			      if (httpsingress.checked){
+			         create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
+				  }
+				  else {
+				     create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -1020, 0),  new THREE.Vector3(0, 0, 0), 'http://'+ingressurls[i]);
+				  };
 				  xpos +=415;
 			      }
 			   }
