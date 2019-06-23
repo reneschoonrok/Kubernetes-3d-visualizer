@@ -54,9 +54,9 @@ function loadevents() {
 
 
         if (currentTime > new Date(eventinfo[i])) {
-           console.log("skipping")
+           //console.log("skipping")
         } else {
-           console.log("not skipping")
+           //console.log("not skipping")
            var element = document.createElement( 'div' );
            element.className = 'element';
            element.style.backgroundColor = eventinfo[ i + 2 ];
@@ -68,24 +68,13 @@ function loadevents() {
 
            element.addEventListener( 'click', function (event) {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", 'http://localhost:8001/apis/apps/v1/namespaces/'+mynamespace+'/events/'+ event.currentTarget.childNodes[1].textContent, true);
+            xhttp.open("GET", 'http://localhost:8001/api/v1/namespaces/'+mynamespace+'/events/'+ event.currentTarget.childNodes[1].textContent, true);
             xhttp.send();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
-                    info[0] = "http://localhost:8001/apis/apps/v1/namespaces/"+mynamespace+"/events/" + jsonPath(response , "$.metadata.name");
-                    detail1.innerHTML = jsonPath(response , "$.metadata.name");
-                    detail2.innerHTML = 'Events          : ' + jsonPath(response , "$.spec.replicas");
-                    detail3.innerHTML = 'Readystatus       : ' + jsonPath(response , "$.status.readyReplicas");
-                    detail4.innerHTML = 'Version            : ' + jsonPath(response , "$.metadata.labels.version");
-                    var response5 = '';
-                    detail5.innerHTML = jsonPath(response , "$.spec.replicas");
-                    //var response2 = jsonPath(response , "$.status.phase");
-                    detail6.innerHTML = '';
-                    detail7.innerHTML = '';
-                    detail8.innerHTML = 'Add replica';
-                    detail9.innerHTML = 'Reduce replica';
+                    info[0] = "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/events/" + jsonPath(response , "$.metadata.name");
                     detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
                     detail10.innerHTML = 'Open spec';
                     detail11.innerHTML = ''; //don't delete replicasets from here
@@ -105,7 +94,7 @@ function loadevents() {
 
         var symbol = document.createElement( 'div' );
         symbol.className = 'symbol';
-        symbol.textContent = eventinfo[ i + 5 ].substring(0, 18);;
+        symbol.textContent = eventinfo[ i + 5 ];
         element.appendChild( symbol );
 
         var details = document.createElement( 'div' );

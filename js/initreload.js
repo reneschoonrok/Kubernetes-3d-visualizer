@@ -9,8 +9,8 @@ function reload() {
         };
     }
 
-    while(sceneGl.children.length > 1){
-         sceneGl.remove(sceneGl.children[1]);
+    while(sceneGl.children.length > 2){
+         sceneGl.remove(sceneGl.children[2]);
     }
     for (var member in resourcetypes) delete objects[resourcetypes];
     for (var member in nodeinfo) delete objects[nodeinfo];
@@ -39,7 +39,7 @@ function init() {
  image.addEventListener('load', function(event) {
 
 			      objectlogo.position.x = 100,
-			        objectlogo.position.y = 1220,
+			        objectlogo.position.y = 2520, //ff weg
 			        objectlogo.position.z = -500;
 			        objectlogo.rotation.x +=0.01;
 			      scene.add(objectlogo);
@@ -61,13 +61,24 @@ function init() {
 
 	cube = new THREE.Mesh( boxGeom, logoMaterial );//glscene
 
-    cube.position.copy(new THREE.Vector3(-1060, 1080, 50));//glscene
+    cube.position.copy(new THREE.Vector3(-1060, 1080, 0));//glscene
 
-	//cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene
-    //cube1.position.copy(new THREE.Vector3(-660, 400, 0));//glscene
 
+
+    var boxGeomlogo2 = new THREE.CubeGeometry(1700, 250, 10);//glscene
+    var texturelogo2 = new THREE.TextureLoader().load( './img/kubernetesword.png' );//glscene
+
+	var materiallogo2 = new THREE.MeshBasicMaterial( { map: texturelogo2, opacity: 0.7} );//glscene
+	materiallogo2.transparent = false;
+
+
+
+	cube44 = new THREE.Mesh( boxGeomlogo2, materiallogo2 );//glscene
+
+    cube44.position.copy(new THREE.Vector3(0, 1080, 0));//glscene
+    sceneGl.add(cube44);//glscene
     sceneGl.add(cube);//glscene
-    //sceneGl.add(cube1);//glscene
+
     //sceneGl.add(cube2);//glscene
     //sceneGl.add(cube3);//glscene
     rendererGl = new THREE.WebGLRenderer({alpha:true});//glscene
