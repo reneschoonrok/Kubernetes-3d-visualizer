@@ -158,10 +158,15 @@ function loadevents() {
         object.position.x = ( eventinfo[ i + 3 ] * 140 ) - 1330;
         object.position.y = - ( eventinfo[ i + 4 ] * 180 ) + 270;
 
+
         scene.add( object );
 
         objects.push( object );
-
+        if (eventinfo[ i + 7 ] =='Killing') {
+          var objecticon = new THREE.CSS3DSprite(image2.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
 
     }
     }
