@@ -17,6 +17,7 @@ function reload() {
     for (var member in targets.nodeinfo) delete objects[targets.nodeinfo];
     for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
     for (var member in targets.replicaset) delete objects[targets.replicaset];
+    for (var member in targets.eventinfo) delete objects[targets.eventinfo];
     for (var member in targets.deployment) delete objects[targets.deployment];
     objects.clear;
     scene.clear;
@@ -46,19 +47,20 @@ function init() {
 
 			  }, false);
 
-    var boxGeom = new THREE.CubeGeometry(200, 200, 200);//glscene
-    var texture = new THREE.TextureLoader().load( './img/Kubernetes.png' );//glscene
-
-
-    //var boxGeom1 = new THREE.CubeGeometry(55,20, 20);//glscene
-    //var texture1 = new THREE.TextureLoader().load( './img/container1.png' );//glscene
+    var boxGeom = new THREE.CubeGeometry(200, 200, 1);//glscene
+    var texture = new THREE.TextureLoader().load( './img/logoleeg3.png' );//glscene
 
 	var material = new THREE.MeshBasicMaterial( { map: texture, opacity: 0.7} );//glscene
-	material.transparent = false;
-	//var material1 = new THREE.MeshBasicMaterial( { map: texture1, opacity: 0.7} );//glscene
-    //material1.transparent = false;
+	material.transparent = true;
 
-	cube = new THREE.Mesh( boxGeom, material );//glscene
+	var logoTexture = new THREE.ImageUtils.loadTexture( './img/wheel7.png' );
+	logonodetexture = new TextureAnimator( logoTexture, 4, 1, 4, 100 ); // texture, #horiz, #vert, #total, duration.
+	var logoMaterial = new THREE.MeshBasicMaterial( { map: logoTexture, side:THREE.DoubleSide } );
+	logoMaterial.transparent = true;
+
+
+	cube = new THREE.Mesh( boxGeom, logoMaterial );//glscene
+
     cube.position.copy(new THREE.Vector3(-1060, 1080, 50));//glscene
 
 	//cube1 = new THREE.Mesh( boxGeom1, material1 );//glscene

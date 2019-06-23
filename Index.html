@@ -15,6 +15,7 @@
 		<script src="js/pods.js"></script>
 
 		<script src="js/replicasets.js"></script>
+		<script src="js/events.js"></script>
 		<script src="js/deployments.js"></script>
 		<script src="js/initreload.js"></script>
 		<script src="js/ingresses.js"></script>
@@ -56,7 +57,7 @@
 				" ", "", "rgba(147, 232, 44,0.4)", 1, 4, " ",
 				"Deployments", "", "rgba(200, 7, 200,0.4)", 1, 5, " ",
 				" ", "", "rgba(200, 7, 200,0.4)", 1, 6, " ",
-				"Replicasets", "", "rgba(56, 124, 52,0.4)", 1, 7, " ",
+				"Events", "", "rgba(56, 124, 52,0.4)", 1, 7, " ",
 				" ", "", "rgba(56, 124, 52,0.4)", 1, 8, " ",
 				"Ingress", "", "rgba(237, 149, 61,0.4)", 1, 9, " "
 			];
@@ -71,6 +72,7 @@
 			var nodeinfo = [];
 			var podinfo = [];
 			var replicaset = [];
+			var eventinfo = [];
 			var deployment = [];
 			var ingressinfo = [];
 			var ingressurls = [];
@@ -81,7 +83,7 @@
 			var rotateswitch = 1;
 
 			var objects = [];
-			var targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [] };
+			var targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [], eventinfo: [] };
 			var longerlivables = { ingressinfo: []};
 			var image = document.createElement( 'img' );
 			var mynamespace = 'kube-system';
@@ -89,7 +91,7 @@
 			var clock = new THREE.Clock();
 
 			var image = document.createElement('img');
-						  image.src = './img/kubernetesword.png';
+			image.src = './img/kubernetesword.png';
 	     	var objectlogo = new THREE.CSS3DSprite(image.cloneNode());
             var texture1 = new THREE.TextureLoader().load( './img/containerready.png' );//glscene
 
@@ -105,10 +107,11 @@
 	var runner = new THREE.Mesh(runnerGeometry, runnerMaterial);
 	runner.position.set(-100,25,0);
 
-	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/server12.png' );
-	nodetexture = new TextureAnimator( runner2Texture, 12, 1, 12, 175 ); // texture, #horiz, #vert, #total, duration.
+	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/wheel3.png' );
+	nodetexture = new TextureAnimator( runner2Texture, 4, 1, 4, 75 ); // texture, #horiz, #vert, #total, duration.
 	var runner2Material = new THREE.MeshBasicMaterial( { map: runner2Texture, side:THREE.DoubleSide } );
-	var runner2Geometry = new THREE.PlaneGeometry(100,42, 1, 1);
+	runner2Material.transparent = true;
+	var runner2Geometry = new THREE.PlaneGeometry(50,50, 1, 1);
 	var runner2 = new THREE.Mesh(runner2Geometry, runnerMaterial);
 	runner2.position.set(-100,25,0);
 
@@ -207,30 +210,31 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			var delta = clock.getDelta();
 			ingresstexture.update(1000 * delta);
 			nodetexture.update(1000 * delta);
+			logonodetexture.update(1000 * delta);
 
 			if ((cube.rotation.x < -6.25)&&(rotateswitch == 1))
 			{
 			    rotateswitch = 0;
-			    cube.rotation.y =0;
+			    //cube.rotation.y =0;
 			    //cube1.rotation.y =0;
 
 			 };
 			 if ((cube.rotation.y < -6.25)&&(rotateswitch == 0))
 			 {
 			    rotateswitch = 1;
-			    cube.rotation.x =0;
+			    //cube.rotation.x =0;
 			    //cube1.rotation.x =0;
 
 
 			 };
 
 				if (rotateswitch == 1) {
-				  cube.rotation.x -=0.02;
+				  //cube.rotation.x -=0.01;
 			      //cube1.rotation.x -=0.02;
 
 			    }
 			    else {
-				  cube.rotation.y -=0.02;
+				  //cube.rotation.y -=0.01;
 			      //cube1.rotation.y +=0.02;
 
 			    };
@@ -256,12 +260,14 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 				loadinfo();
 				//loadreplicasets();
 				loaddeployments();
+				loadevents();
 				loadingresses();
 				loadnodes();
 				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 
 				podinfo.splice(0, podinfo.length)
 				//replicaset.splice(0, replicaset.length)
+				eventinfo.splice(0, eventinfo.length)
 				deployment.splice(0, deployment.length)
 				nodeinfo.splice(0, nodeinfo.length)
 				ingressinfo.splice(0, ingressinfo.length)

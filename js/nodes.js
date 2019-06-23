@@ -53,7 +53,7 @@ function loadnodes() {
       objects.push( object );
 
               var runner2 = new THREE.Mesh(runner2Geometry, runner2Material);
-              runner2.position.set(object.position.x+140,object.position.y-55,0);
+              runner2.position.set(object.position.x+165,object.position.y-45,0);
               sceneGl.add(runner2);
 
 
