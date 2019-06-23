@@ -232,10 +232,10 @@ function loadinfo() {
 
         if ( podstatus.textContent == "-Podstatus: Running") {
            podstatus.className = 'podgood';
-           cube1 = new THREE.Mesh( boxGeom1, materialready );//glscene
+           cubecontainer = new THREE.Mesh( boxGeom1, materialready );//glscene
         } else {
            podstatus.className = 'podbad';
-           cube1 = new THREE.Mesh( boxGeom1, materialnotready );//glscene
+           cubecontainer = new THREE.Mesh( boxGeom1, materialnotready );//glscene
 
         };
         element.appendChild( podstatus );
@@ -246,8 +246,8 @@ function loadinfo() {
         object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1330;
         object.position.y = - ( podinfo[ i + 4 ] * 180 ) + 990;
 
-        cube1.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
-        sceneGl.add(cube1);//glscene
+        cubecontainer.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
+        sceneGl.add(cubecontainer);//glscene
 
         scene.add( object );
 
