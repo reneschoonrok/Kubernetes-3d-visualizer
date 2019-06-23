@@ -48,7 +48,7 @@ function loadevents() {
 };
     var currentTime = new Date();
     //currentTime = currentTime.getTime() -  currentTime.getTime() / 1000;
-    currentTime = (currentTime.getTime()-360000);
+    currentTime = (currentTime.getTime()-36000);
     var teller = 0;
     for ( var i = 0; i < eventinfo.length; i += 9 ) {
 
@@ -58,7 +58,7 @@ function loadevents() {
         } else {
            //console.log("not skipping")
            var element = document.createElement( 'div' );
-           element.className = 'element';
+           element.className = 'eventelement';
            element.style.backgroundColor = eventinfo[ i + 2 ];
            eventinfo[i+3] = 5 + (teller*3);
            eventinfo[i+4] = 3 ;
@@ -68,7 +68,7 @@ function loadevents() {
 
            element.addEventListener( 'click', function (event) {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", 'http://localhost:8001/api/v1/namespaces/'+mynamespace+'/events/'+ event.currentTarget.childNodes[1].textContent, true);
+            xhttp.open("GET", 'http://localhost:8001/api/v1/namespaces/'+mynamespace+'/events/'+ event.currentTarget.childNodes[0].textContent, true);
             xhttp.send();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
@@ -84,12 +84,12 @@ function loadevents() {
             }
         }, false );
 
-        var number = document.createElement( 'div' );
-        number.textContent = eventinfo[ i + 5 ];
-        if ( number.textContent == "-Ready: false") { number.className = 'numberbad';};
-        if ( number.textContent == "-Ready: ") { number.className = 'numbergood';};
-        if ( number.textContent == "-Ready: true") { number.className = 'numberbest';}
-        element.appendChild( number );
+        //var number = document.createElement( 'div' );
+        //number.textContent = eventinfo[ i + 5 ];
+        //if ( number.textContent == "-Ready: false") { number.className = 'numberbad';};
+        //if ( number.textContent == "-Ready: ") { number.className = 'numbergood';};
+        //if ( number.textContent == "-Ready: true") { number.className = 'numberbest';}
+        //element.appendChild( number );
 
 
         var symbol = document.createElement( 'div' );

@@ -141,26 +141,6 @@
 					color: rgba(102, 255, 51,1);
 				}
 
-				.element .evtdetails {
-                				    width: 400px;
-                					position: absolute;
-                					top: 70px;
-                					left: 5px;
-                					font-size: 15px;
-                					color: rgba(102, 255, 51,1);
-                }
-
-				.element .evt2details {
-                				    width: 400px;
-                					position: absolute;
-                					top: 95px;
-                					left: 5px;
-                					font-size: 15px;
-                					color: rgba(102, 255, 51,1);
-                }
-
-
-
 				.element .symbol {
 					position: absolute;
 					top: 5px;
@@ -203,6 +183,56 @@
 					border: 1px solid rgba(127,255,255,0.75);
 				}
 
+            .eventelement {
+				width: 400px;
+				height: 160px;
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.25);
+				text-align: left;
+				cursor: default;
+				color: rgba(147, 232, 44,0,75);
+            }
+
+            .eventelement .symbol {
+                position: absolute;
+                top: 5px;
+                left: 10px;
+                right: 0px;
+                font-size: 15px;
+                font-weight: normal;
+                color: rgba(255,255,255,1);
+                text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            }
+            .eventelement .evtdetails {
+                                width: 400px;
+                                position: absolute;
+                                bottom: 8px;
+                                left: 230px;
+                                font-size: 20px;
+                                color: rgba(102, 255, 51,1);
+            }
+
+            .eventelement .evt2details {
+                                width: 400px;
+                                position: absolute;
+                                top: 45px;
+                                left: 5px;
+                                font-size: 15px;
+                                color: rgba(102, 255, 51,1);
+            }
+
+            .eventelement .delete {
+                width: 60px;
+                height: 25px;
+                position: absolute;
+                bottom: 5px;
+                left: 10px;
+                right: 0px;
+                font-size: 16px;
+                font-weight: bold;
+                color: rgba(255,255,255,0.75);
+                text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            }
 
 
 			.resourcetypeelement {
