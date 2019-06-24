@@ -24,17 +24,9 @@ function loaddeployments() {
         deployment[j+1] = "-Replica's: " + response3[i];
         deployment[j+2] = "rgba(56, 124, 52,0.2)"; //background of deployments
 
-        if (i < 6) {
-          deployment[j+3] = 5 + (i*3);
-          deployment[j+4] = 3 ; //rij links rechts
-        } else if (i < 12) {
-          deployment[j+3] = 5 + ((i-6)*3);
-          deployment[j+4] = 4 ; //rij links rechts
-        } else {
-          deployment[j+3] = 5 + ((i-12)*3);
-          deployment[j+4] = 5 ; //rij links rechts
-        }
 
+        deployment[j+3] = 5 + (i*3);
+        deployment[j+4] = 3 ; //rij links rechts
 
         deployment[j+5] = "-Ready: " + response4[i];
         deployment[j+6] = "-Image: " + response5[i];

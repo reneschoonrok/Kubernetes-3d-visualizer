@@ -26,16 +26,6 @@ function loadevents() {
         eventinfo[j] = response1[i];
         eventinfo[j+1] = "-Message: " + response3[i];
         eventinfo[j+2] = "rgba(56, 124, 52,0.2)"; //background of replicasets
-
-        if (i < 6) {
-          eventinfo[j+3] = 5 + (i*3);
-          eventinfo[j+4] = 3 ; //rij links rechts
-        } else  {
-          eventinfo[j+3] = 5 + ((i-6)*3);
-          eventinfo[j+4] = 4 ; //rij links rechts
-        }
-
-
         eventinfo[j+5] = response2[i];
         eventinfo[j+6] = "-Image: " + response5[i];
         //replicaset[j+7] = "-Started at: " + response6[i];
@@ -61,7 +51,7 @@ function loadevents() {
            element.className = 'eventelement';
            element.style.backgroundColor = eventinfo[ i + 2 ];
            eventinfo[i+3] = 5 + (teller*3);
-           eventinfo[i+4] = 3 ;
+           eventinfo[i+4] = 2 ;
            teller +=1;
            //eventinfo[j+3] = 5 + (i*3);
 
@@ -167,6 +157,57 @@ function loadevents() {
           objecticon.position.set(object.position.x-30,object.position.y-55,0);
           scene.add(objecticon);
         }
+
+        if (eventinfo[ i + 7 ] =='Pulled') {
+          var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='Pulling') {
+          var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='Created') {
+          var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='Started') {
+          var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+
+        if (eventinfo[ i + 7 ] =='Failed') {
+          var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='Unhealthy') {
+          var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='Scheduled') {
+          var objecticon = new THREE.CSS3DSprite(image6.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+        if (eventinfo[ i + 7 ] =='SuccessfulCreate') {
+          var objecticon = new THREE.CSS3DSprite(image7.cloneNode());
+          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          scene.add(objecticon);
+        }
+
+
 
     }
     }
