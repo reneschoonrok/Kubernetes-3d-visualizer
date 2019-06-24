@@ -27,7 +27,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
 
 
         ingressinfo[j+3] = 5 + (i*3);
-        ingressinfo[j+4] = 7 ; //rij links rechts
+        ingressinfo[j+4] = 5 ; //rij links rechts
 
 
         ingressinfo[j+5] = "-Ready: " + response4[i];
