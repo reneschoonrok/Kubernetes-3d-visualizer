@@ -8,12 +8,6 @@ function init() {
 
  image.addEventListener('load', function(event) {
 
-			      objectlogo.position.x = 100,
-			        objectlogo.position.y = 2520, //ff weg
-			        objectlogo.position.z = -500;
-			        objectlogo.rotation.x +=0.01;
-			      scene.add(objectlogo);
-			      objects.push(objectlogo);
 
 			  }, false);
 
