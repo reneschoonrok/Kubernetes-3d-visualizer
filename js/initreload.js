@@ -18,7 +18,7 @@ function init() {
 	material.transparent = true;
 
 	var logoTexture = new THREE.ImageUtils.loadTexture( './img/wheel7.png' );
-	logonodetexture = new TextureAnimator( logoTexture, 4, 1, 4, 100 ); // texture, #horiz, #vert, #total, duration.
+	logonodetexture = new TextureAnimator( logoTexture, 4, 1, 4, 500 ); // texture, #horiz, #vert, #total, duration.
 	var logoMaterial = new THREE.MeshBasicMaterial( { map: logoTexture, side:THREE.DoubleSide } );
 	logoMaterial.transparent = true;
 
@@ -40,6 +40,8 @@ function init() {
 	cube44 = new THREE.Mesh( boxGeomlogo2, materiallogo2 );//glscene
 
     cube44.position.copy(new THREE.Vector3(0, 1080, 0));//glscene
+    cube44.type='logo';
+    cube.type='logo'
     sceneGl.add(cube44);//glscene
     sceneGl.add(cube);//glscene
 
@@ -148,40 +150,8 @@ function init() {
         }, false );
     loadresourcetypes();
     loadnamespaces();
+    loadnodes();
     window.addEventListener( 'resize', onWindowResize, false );
-}
-
-
-function reload() {
-    //targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [] };
-    //objects = [];
-
-    for (var i = scene.children.length-1; i > -1; i -= 1){
-       if (scene.children[i].castShadow == false){
-          if (scene.children[i].type!= 'deployment'){
-             if (scene.children[i].type!= 'resourcetype'){
-                 if (scene.children[i].type!= 'namespace'){
-                    scene.remove(scene.children[i]);
-                 }
-             }
-          }
-        };
-    }
-
-    while(sceneGl.children.length > 2){
-         sceneGl.remove(sceneGl.children[2]);
-    }
-    //for (var member in resourcetypes) delete objects[resourcetypes];
-    //for (var member in nodeinfo) delete objects[nodeinfo];
-    //for (var member in targets.nodeinfo) delete objects[targets.nodeinfo];
-    //for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
-    //for (var member in targets.replicaset) delete objects[targets.replicaset];
-    //for (var member in targets.eventinfo) delete objects[targets.eventinfo];
-    //for (var member in targets.deployment) delete objects[targets.deployment];
-    //objects.clear;
-    //scene.clear;
-    //targets.clear;
-    //sceneGl.clear;
 }
 
 

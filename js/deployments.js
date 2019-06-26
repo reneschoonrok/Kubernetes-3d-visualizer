@@ -20,7 +20,7 @@ function loaddeployments() {
          for (var i = 0; i < arrayLength; i++) {
             deployment[j] = response1[i];
             deployment[j+1] = "-Replica's: " + response3[i];
-            deployment[j+2] = "rgba(56, 124, 52,0.2)"; //background of deployments
+            deployment[j+2] = "rgba(200, 7, 200,0.2)"; //background of deployments
             deployment[j+3] = 5 + (i*3);
             deployment[j+4] = 3 ; //rij links rechts
             deployment[j+5] = "-Ready: " + response4[i];
@@ -43,7 +43,7 @@ function loaddeployments() {
 
    for ( var i = 0; i < deployment.length; i += 9 ) {
       var element = document.createElement( 'div' );
-      element.className = 'element';
+      element.className = 'deploymentelement';
       element.style.backgroundColor = deployment[ i + 2 ];
       element.addEventListener( 'click', function (event) {
          var xhttp = new XMLHttpRequest();
@@ -134,8 +134,8 @@ function loaddeployments() {
       element.appendChild( podstatus );
 
       var object = new THREE.CSS3DObject( element );
-      object.position.x = ( deployment[ i + 3 ] * 140 ) - 1330;
-      object.position.y = - ( deployment[ i + 4 ] * 180 ) + 630;
+      object.position.x = ( deployment[ i + 3 ] * 140 ) - 1360;
+      object.position.y = - ( deployment[ i + 4 ] * 180 ) + 950;
       object.type = 'deployment';
 
       scene.add( object );

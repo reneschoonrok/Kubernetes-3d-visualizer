@@ -52,9 +52,337 @@
             			}
 
 
+            			.podelement {
+            				width: 400px;
+            				height: 120px;
+				            box-shadow: 0px 0px 8px rgba(0,255,255,0.5);
+				            border: 1px solid rgba(127,255,255,0.4);
+            				text-align: left;
+            				cursor: default;
+            				color: rgba(147, 232, 44,0,75);
+            			}
+
+
+            			.podelement:hover {
+            				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            				border: 1px solid rgba(127,255,255,0.75);
+            			}
+
+            				.podelement .number {
+            					position: absolute;
+            					top: 10px;
+            					right: 20px;
+            					font-size: 15px;
+            					color: rgba(102, 255, 51,1);
+            				}
+
+            				.podelement .numberbad {
+            					position: absolute;
+            					top: 70px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(255, 0, 0,1);
+            				}
+
+            				.podelement .numbergood {
+            					position: absolute;
+            					top: 70px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(255, 255, 0,1);
+            				}
+
+            			   .podelement .numberbest {
+                                 position: absolute;
+                                 top: 70px;
+                                 left: 230px;
+                                 font-size: 15px;
+                                 color: rgba(102, 255, 51,1);
+                            }
+
+            				.podelement .restarts {
+                            	position: absolute;
+                            	top: 60px;
+                            	left: 230px;
+                            	font-size: 15px;
+                            	color: rgba(102, 255, 51,1);
+                            }
+
+            				.podelement .podbad {
+                            	position: absolute;
+                            	top: 50px;
+               					left: 230px;
+                                font-size: 15px;
+                            	color: rgba(255, 0, 0,1);
+                            }
+
+                            .podelement .podgood {
+                            	position: absolute;
+                            	top: 50px;
+                                left: 230px;
+                            	font-size: 15px;
+                            	color: rgba(102, 255, 51,1);
+                            }
+
+            				.podelement .details {
+            					position: absolute;
+            					top: 90px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(102, 255, 51,1);
+            				}
+
+
+            				.podelement .symbol {
+            					position: absolute;
+            					top: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 22px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 6px rgba(0,255,255,0.8);
+            				}
+
+            				.podelement .description {
+            					width: 600px;
+            					height: 250px;
+            					position: absolute;
+            					top: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 35px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            				}
+
+            				.podelement .delete {
+            					width: 60px;
+            					height: 25px;
+            					position: absolute;
+            					bottom: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 16px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            				}
+
+            				.podelement .delete:hover {
+            					box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            					border: 1px solid rgba(127,255,255,0.75);
+            				}
+
+           			.deploymentelement {
+            				width: 400px;
+            				height: 60px;
+				            box-shadow: 0px 0px 8px rgba(0,255,255,0.5);
+				            border: 1px solid rgba(127,255,255,0.4);
+            				text-align: left;
+            				cursor: default;
+            				color: rgba(147, 232, 44,0,75);
+            			}
+
+
+            			.deploymentelement:hover {
+            				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            				border: 1px solid rgba(127,255,255,0.75);
+            			}
+
+            				.deploymentelement .number {
+            					position: absolute;
+            					top: 10px;
+            					right: 20px;
+            					font-size: 15px;
+            					color: rgba(102, 255, 51,1);
+            				}
+
+            				.deploymentelement .numberbad {
+            					position: absolute;
+            					top: 70px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(255, 0, 0,1);
+            				}
+
+            				.deploymentelement .numbergood {
+            					position: absolute;
+            					top: 70px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(255, 255, 0,1);
+            				}
+
+            			   .deploymentelement .numberbest {
+                                 position: absolute;
+                                 top: 70px;
+                                 left: 230px;
+                                 font-size: 15px;
+                                 color: rgba(102, 255, 51,1);
+                            }
+
+            				.deploymentelement .restarts {
+                            	position: absolute;
+                            	top: 60px;
+                            	left: 230px;
+                            	font-size: 15px;
+                            	color: rgba(102, 255, 51,1);
+                            }
+
+            				.podelement .podbad {
+                            	position: absolute;
+                            	top: 50px;
+               					left: 230px;
+                                font-size: 15px;
+                            	color: rgba(255, 0, 0,1);
+                            }
+
+                            .deploymentelement .podgood {
+                            	position: absolute;
+                            	top: 50px;
+                                left: 230px;
+                            	font-size: 15px;
+                            	color: rgba(102, 255, 51,1);
+                            }
+
+            				.deploymentelement .details {
+            					position: absolute;
+            					top: 35px;
+            					left: 230px;
+            					font-size: 15px;
+            					color: rgba(102, 255, 51,1);
+            				}
+
+
+            				.deploymentelement .symbol {
+            					position: absolute;
+            					top: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 22px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 6px rgba(0,255,255,0.8);
+            				}
+
+            				.deploymentelement .description {
+            					width: 600px;
+            					height: 250px;
+            					position: absolute;
+            					top: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 35px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            				}
+
+            				.deploymentelement .delete {
+            					width: 60px;
+            					height: 25px;
+            					position: absolute;
+            					bottom: 5px;
+            					left: 10px;
+            					right: 0px;
+            					font-size: 16px;
+            					font-weight: bold;
+            					color: rgba(255,255,255,0.75);
+            					text-shadow: 0 0 10px rgba(0,255,255,0.95);
+            				}
+
+            				.deploymentelement .delete:hover {
+            					box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+            					border: 1px solid rgba(127,255,255,0.75);
+            				}
+
+			.elementnormal {
+			    width: 400px;
+				height: 120px;
+				box-shadow: 0px 0px 8px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.4);
+				text-align: left;
+				cursor: default;
+				color: rgba(147, 232, 44,0,75);
+			}
+
+
+			.elementnormal:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.85);
+				border: 1px solid rgba(127,255,255,0.85);
+			}
+
+            .elementnormal .symbol {
+                position: absolute;
+                top: 7px;
+                left: 65px;
+                right: 0px;
+                font-size: 35px;
+                font-weight: bold;
+                color: rgba(255,255,255,0.75);
+                text-shadow: 0 0 8px rgba(0,255,255,0.8);
+            }
+
+			.elementsmall {
+			    width: 400px;
+				height: 60px;
+				box-shadow: 0px 0px 8px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.4);
+				text-align: left;
+				cursor: default;
+				color: rgba(147, 232, 44,0,75);
+			}
+
+
+			.elementsmall:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.85);
+				border: 1px solid rgba(127,255,255,0.85);
+			}
+
+				.elementsmall .symbol {
+					position: absolute;
+					top: 7px;
+					left: 65px;
+					right: 0px;
+					font-size: 35px;
+					font-weight: bold;
+					color: rgba(255,255,255,0.75);
+					text-shadow: 0 0 8px rgba(0,255,255,0.8);
+				}
+
+				.elementbiggest {
+                    width: 400px;
+                    height: 250px;
+                    box-shadow: 0px 0px 8px rgba(0,255,255,0.5);
+                    border: 1px solid rgba(127,255,255,0.4);
+                    text-align: left;
+                    cursor: default;
+                    color: rgba(147, 232, 44,0,75);
+                }
+
+
+                .elementbiggest:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.85);
+				border: 1px solid rgba(127,255,255,0.85);
+                }
+
+                    .elementbiggest .symbol {
+                        position: absolute;
+                        top: 7px;
+                        left: 65px;
+                        right: 0px;
+                        font-size: 35px;
+                        font-weight: bold;
+                        color: rgba(255,255,255,0.75);
+                        text-shadow: 0 0 8px rgba(0,255,255,0.8);
+                    }
+
+
 			.element {
 				width: 400px;
-				height: 160px;
+				height: 120px;
 				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
 				border: 1px solid rgba(127,255,255,0.25);
 				text-align: left;
@@ -64,8 +392,8 @@
 
 
 			.element:hover {
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
-				border: 1px solid rgba(127,255,255,0.75);
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.85);
+				border: 1px solid rgba(127,255,255,0.85);
 			}
 
 				.element .number {
@@ -78,7 +406,7 @@
 				
 				.element .numberbad {
 					position: absolute;
-					top: 100px;
+					top: 90px;
 					left: 230px;
 					font-size: 15px;
 					color: rgba(255, 0, 0,1);
@@ -86,7 +414,7 @@
 				
 				.element .numbergood {
 					position: absolute;
-					top: 100px;
+					top: 90px;
 					left: 230px;
 					font-size: 15px;
 					color: rgba(255, 255, 0,1);
@@ -94,7 +422,7 @@
 
 			   .element .numberbest {
                      position: absolute;
-                     top: 100px;
+                     top: 90px;
                      left: 230px;
                      font-size: 15px;
                      color: rgba(102, 255, 51,1);
@@ -102,7 +430,7 @@
 
 				.element .restarts {
                 	position: absolute;
-                	top: 90px;
+                	top: 80px;
                 	left: 230px;
                 	font-size: 15px;
                 	color: rgba(102, 255, 51,1);
@@ -110,7 +438,7 @@
 
 				.element .podbad {
                 	position: absolute;
-                	top: 80px;
+                	top: 70px;
    					left: 230px;
                     font-size: 15px;
                 	color: rgba(255, 0, 0,1);
@@ -118,7 +446,7 @@
 
                 .element .podgood {
                 	position: absolute;
-                	top: 80px;
+                	top: 70px;
                     left: 230px;
                 	font-size: 15px;
                 	color: rgba(102, 255, 51,1);
@@ -126,7 +454,7 @@
 
 				.element .details {
 					position: absolute;
-					top: 120px;
+					top: 100px;
 					left: 230px;
 					font-size: 15px;
 					color: rgba(102, 255, 51,1);
@@ -135,7 +463,7 @@
 				.element .ingressdetails {
 				    width: 400px;
 					position: absolute;
-					top: 105px;
+					top: 55px;
 					left: 5px;
 					font-size: 15px;
 					color: rgba(102, 255, 51,1);
@@ -183,9 +511,11 @@
 					border: 1px solid rgba(127,255,255,0.75);
 				}
 
+
+
             .eventelement {
 				width: 400px;
-				height: 160px;
+				height: 120px;
 				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
 				border: 1px solid rgba(127,255,255,0.25);
 				text-align: left;
@@ -207,7 +537,7 @@
                                 width: 400px;
                                 position: absolute;
                                 bottom: 8px;
-                                left: 230px;
+                                left: 180px;
                                 font-size: 20px;
                                 color: rgba(102, 255, 51,1);
             }
@@ -215,7 +545,7 @@
             .eventelement .evt2details {
                                 width: 400px;
                                 position: absolute;
-                                top: 45px;
+                                top: 40px;
                                 left: 5px;
                                 font-size: 15px;
                                 color: rgba(102, 255, 51,1);
@@ -233,50 +563,6 @@
                 color: rgba(255,255,255,0.75);
                 text-shadow: 0 0 10px rgba(0,255,255,0.95);
             }
-
-
-			.resourcetypeelement {
-				width: 450px;
-				height: 160px;
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
-				border: 1px solid rgba(127,255,255,0.25);
-				text-align: center;
-				cursor: default;
-			}
-
-			.resourcetypeelement:hover {
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
-				border: 1px solid rgba(127,255,255,0.75);
-			}
-
-				.resourcetypeelement .number {
-					position: absolute;
-					top: 10px;
-					right: 20px;
-					font-size: 12px;
-					color: rgba(127,255,255,0.75);
-				}
-
-				.resourcetypeelement .symbol {
-					position: absolute;
-					top: 40px;
-					left: 0px;
-					right: 0px;
-					font-size: 60px;
-					font-weight: bold;
-					color: rgba(255,255,255,0.75);
-					text-shadow: 0 0 10px rgba(0,255,255,0.95);
-				}
-
-				.resourcetypeelement .details {
-					position: absolute;
-					bottom: 15px;
-					left: 0px;
-					right: 0px;
-					font-size: 12px;
-					color: rgba(127,255,255,0.75);
-				}
-
 
 			#infomenu {
             				position: absolute;
