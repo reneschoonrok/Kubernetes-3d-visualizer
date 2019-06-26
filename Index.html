@@ -13,8 +13,9 @@
 		<script src="js/CSS3DRenderer.js"></script>
 		<script src="js/nodes.js"></script>
 		<script src="js/pods.js"></script>
-
+		<script src="js/resourcetypes.js"></script>
 		<script src="js/replicasets.js"></script>
+		<script src="js/namespaces.js"></script>
 		<script src="js/events.js"></script>
 		<script src="js/deployments.js"></script>
 		<script src="js/initreload.js"></script>
@@ -230,63 +231,44 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			nodetexture.update(1000 * delta);
 			logonodetexture.update(1000 * delta);
 
-			if ((cube.rotation.x < -6.25)&&(rotateswitch == 1))
-			{
-			    rotateswitch = 0;
-			    //cube.rotation.y =0;
-			    //cube1.rotation.y =0;
-
-			 };
-			 if ((cube.rotation.y < -6.25)&&(rotateswitch == 0))
-			 {
-			    rotateswitch = 1;
-			    //cube.rotation.x =0;
-			    //cube1.rotation.x =0;
-
-
-			 };
-
-				if (rotateswitch == 1) {
-				  //cube.rotation.x -=0.01;
-			      //cube1.rotation.x -=0.02;
-
-			    }
-			    else {
-				  //cube.rotation.y -=0.01;
-			      //cube1.rotation.y +=0.02;
-
-			    };
-
 			      scene.add(objectlogo);
-
-			     //scene.add(mycssObject);
-
 
 			      objects.push(objectlogo);
 			      //objects.push(mycssObject);
 			      rendererGl.render(sceneGl, camera);
 				renderer.render( scene, camera );
-
-
 			}
-			
-			var intervalID = window.setInterval(myRefresh, 2000);
+
+
+		   var intervalID = window.setInterval(myDeploymentRefresh, 5000);
+
+		   function myDeploymentRefresh() {
+        	   loaddeployments();
+        	   deployment.splice(0, deployment.length)
+		   }
+
+		   //var intervalID = window.setInterval(myNamespaceRefresh, 5000);
+
+		   //function myNamespaceRefresh() {
+           //   loadnamespaces();
+           //   namespaces.splice(0, namespace.length)
+		   //}
+
+			var intervalID = window.setInterval(myRefresh, 3000);
 
 			function myRefresh() {
 		
 				reload();
 				loadinfo();
 				//loadreplicasets();
-				loaddeployments();
 				loadevents();
 				loadingresses();
 				loadnodes();
-				//create3dPage( 400, 400, new THREE.Vector3(550, 500, 0),  new THREE.Vector3(0, 0, 0), 'https://threejs.org/examples/#webgl_materials_envmaps_exr');
 
 				podinfo.splice(0, podinfo.length)
 				//replicaset.splice(0, replicaset.length)
 				eventinfo.splice(0, eventinfo.length)
-				deployment.splice(0, deployment.length)
+
 				nodeinfo.splice(0, nodeinfo.length)
 				ingressinfo.splice(0, ingressinfo.length)
 			}
