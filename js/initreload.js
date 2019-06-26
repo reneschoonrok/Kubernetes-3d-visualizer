@@ -1,31 +1,3 @@
-
-function reload() {
-    targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [] };
-    objects = [];
-
-    for (var i = scene.children.length-1; i > -1; i -= 1){
-       if (scene.children[i].castShadow == false){
-          scene.remove(scene.children[i]);
-        };
-    }
-
-    while(sceneGl.children.length > 2){
-         sceneGl.remove(sceneGl.children[2]);
-    }
-    for (var member in resourcetypes) delete objects[resourcetypes];
-    for (var member in nodeinfo) delete objects[nodeinfo];
-    for (var member in targets.nodeinfo) delete objects[targets.nodeinfo];
-    for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
-    for (var member in targets.replicaset) delete objects[targets.replicaset];
-    for (var member in targets.eventinfo) delete objects[targets.eventinfo];
-    for (var member in targets.deployment) delete objects[targets.deployment];
-    objects.clear;
-    scene.clear;
-    targets.clear;
-    sceneGl.clear;
-}
-
-
 function init() {
 
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -33,8 +5,6 @@ function init() {
 
     scene = new THREE.Scene();
     sceneGl = new THREE.Scene(); //glscene
-    var speclink = '';
-
 
  image.addEventListener('load', function(event) {
 
@@ -79,8 +49,6 @@ function init() {
     sceneGl.add(cube44);//glscene
     sceneGl.add(cube);//glscene
 
-    //sceneGl.add(cube2);//glscene
-    //sceneGl.add(cube3);//glscene
     rendererGl = new THREE.WebGLRenderer({alpha:true});//glscene
     rendererGl.setClearColor(0x00ff00, 0.0);//glscene
 
@@ -108,12 +76,6 @@ function init() {
 
     var button = document.getElementById( 'refresh' );
     button.addEventListener( 'click', function () {
-        //reload();
-        //loadinfo();
-        //loadreplicasets();
-        //loaddeployments();
-        //loadingresses();
-        //loadnodes();
 
     }, false );
 
@@ -190,6 +152,42 @@ function init() {
                   }
 
         }, false );
-
+    loadresourcetypes();
+    loadnamespaces();
     window.addEventListener( 'resize', onWindowResize, false );
 }
+
+
+function reload() {
+    //targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [] };
+    //objects = [];
+
+    for (var i = scene.children.length-1; i > -1; i -= 1){
+       if (scene.children[i].castShadow == false){
+          if (scene.children[i].type!= 'deployment'){
+             if (scene.children[i].type!= 'resourcetype'){
+                 if (scene.children[i].type!= 'namespace'){
+                    scene.remove(scene.children[i]);
+                 }
+             }
+          }
+        };
+    }
+
+    while(sceneGl.children.length > 2){
+         sceneGl.remove(sceneGl.children[2]);
+    }
+    //for (var member in resourcetypes) delete objects[resourcetypes];
+    //for (var member in nodeinfo) delete objects[nodeinfo];
+    //for (var member in targets.nodeinfo) delete objects[targets.nodeinfo];
+    //for (var member in targets.resourcetypes) delete objects[targets.resourcetypes];
+    //for (var member in targets.replicaset) delete objects[targets.replicaset];
+    //for (var member in targets.eventinfo) delete objects[targets.eventinfo];
+    //for (var member in targets.deployment) delete objects[targets.deployment];
+    //objects.clear;
+    //scene.clear;
+    //targets.clear;
+    //sceneGl.clear;
+}
+
+

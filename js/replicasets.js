@@ -151,6 +151,8 @@ function loadreplicasets() {
         object.position.x = ( replicaset[ i + 3 ] * 140 ) - 1330;
         object.position.y = - ( replicaset[ i + 4 ] * 180 ) + 270;
 
+        object.type = 'replicaset';
+
         scene.add( object );
 
         objects.push( object );

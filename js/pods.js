@@ -28,12 +28,8 @@ function loadinfo() {
           podinfo[j+3] = 5 + (i*3);
           podinfo[j+4] = 3 ; //rij links rechts
         } else{
-        //} else if (i < 12) {
           podinfo[j+3] = 5 + ((i-6)*3);
           podinfo[j+4] = 4 ; //rij links rechts
-        //} else {
-        //  podinfo[j+3] = 5 + ((i-12)*3);
-        //  podinfo[j+4] = 5 ; //rij links rechts
         }
 
         podinfo[j+5] = "-Ready: " + response4[i];
@@ -47,66 +43,6 @@ function loadinfo() {
   }
 };
 
-
-    for ( var i = 0; i < resourcetypes.length; i += 6 ) {
-
-        var resourcetype = document.createElement( 'div' );
-        resourcetype.className = 'element';
-        resourcetype.style.backgroundColor = resourcetypes[ i + 2 ];
-
-
-        var number = document.createElement( 'div' );
-        number.className = 'number';
-        number.textContent = resourcetypes[ i + 5 ];
-        resourcetype.appendChild( number );
-
-        var symbol = document.createElement( 'div' );
-        symbol.className = 'symbol';
-        symbol.textContent = resourcetypes[ i ];
-        resourcetype.appendChild( symbol );
-
-        var details = document.createElement( 'div' );
-        details.className = 'details';
-        resourcetype.appendChild( details );
-
-        var object = new THREE.CSS3DObject( resourcetype );
-        object.position.x = object.position.x = ( resourcetypes[ i + 3 ] * 140 ) - 1210;
-        object.position.y = - ( resourcetypes[ i + 4 ] * 180 ) + 990;
-        scene.add( object );
-        objects.push( object );
-    }
-
-    for ( var i = 0; i < namespaces.length; i += 6 ) {
-
-        var namespace = document.createElement( 'div' );
-        namespace.addEventListener( 'click', function (event) {
-            mynamespace = event.currentTarget.childNodes[1].textContent;
-            podinfo.splice(0, podinfo.length)}, false
-        );
-
-        namespace.className = 'element';
-        namespace.style.backgroundColor = namespaces[ i + 2 ];
-
-        var number = document.createElement( 'div' );
-        number.className = 'number';
-        number.textContent = namespaces[ i + 5 ];
-        namespace.appendChild( number );
-
-        var symbol = document.createElement( 'div' );
-        symbol.className = 'symbol';
-        symbol.textContent = namespaces[ i ];
-        namespace.appendChild( symbol );
-
-        var details = document.createElement( 'div' );
-        details.className = 'details';
-        namespace.appendChild( details );
-
-        var object = new THREE.CSS3DObject( namespace );
-        object.position.x = object.position.x = ( namespaces[ i + 3 ] * 140 ) - 1330;
-        object.position.y = - ( namespaces[ i + 4 ] * 180 ) + 990;
-        scene.add( object );
-        objects.push( object );
-    }
 
 
     for ( var i = 0; i < podinfo.length; i += 9 ) {
@@ -239,22 +175,14 @@ function loadinfo() {
 
         };
         element.appendChild( podstatus );
-
-
-
         var object = new THREE.CSS3DObject( element );
         object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1330;
         object.position.y = - ( podinfo[ i + 4 ] * 180 ) + 990;
-
+        object.type = 'pod';
         cubecontainer.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
         sceneGl.add(cubecontainer);//glscene
-
         scene.add( object );
-
         objects.push( object );
-
-
-
     }
 
 }
