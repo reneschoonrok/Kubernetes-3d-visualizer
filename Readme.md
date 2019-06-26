@@ -17,13 +17,6 @@ Also working with Minikube. <br/>
 
 then goto localhost:80 If your chrome is correctly started (see above) it should work. <br/>
 
-### Getting Started
-
-Todo:  <br/>
--Add services to rendering <br/>
--Autodiscovery option for namespaces (make this an option) <br/>
--Clean up code <br/>
-
 I am not an expert on JS or CSS, but I do like to build things.
 
 #### Credits to..
