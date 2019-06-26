@@ -23,14 +23,14 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     for (var i = 0; i < arrayLength; i++) {
         ingressinfo[j] = response1[i];
         ingressinfo[j+1] = "-Url: " + response2[i];
-        ingressinfo[j+2] = "rgba(56, 124, 52,0.2)"; //background of ingressinfos
+        ingressinfo[j+2] = "rgba(237, 149, 61,0.2)"; //background of ingressinfos
 
 
         ingressinfo[j+3] = 5 + (i*3);
         ingressinfo[j+4] = 5 ; //rij links rechts
 
 
-        ingressinfo[j+5] = "-Ready: " + response4[i];
+        ingressinfo[j+5] = " " ;
         ingressinfo[j+6] = "-Image: " + response5[i];
         //ingressinfo[j+7] = "-Started at: " + response6[i];
         ingressinfo[j+7] = " ";
@@ -40,16 +40,26 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     //console.log(ingressinfo);
   }
 };
+   //clear the scene before filling it again
+   var endcounter = scene.children.length-1;
+      for (var i = endcounter; i >= 0; i--){
+         if (scene.children[i].type== 'ingress'){
+           scene.remove(scene.children[i]);
+         }
+   }
 
+   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+      if (sceneGl.children[i].type== 'Glingress'){
+         sceneGl.remove(sceneGl.children[i]);
+      }
+
+   }
 
     for ( var i = 0; i < ingressinfo.length; i += 9 ) {
 
         var element = document.createElement( 'div' );
         element.className = 'element';
         element.style.backgroundColor = ingressinfo[ i + 2 ];
-
-
-
 
         element.addEventListener( 'click', function (event) {
            xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/"+event.currentTarget.childNodes[1].innerHTML, true);
@@ -152,15 +162,17 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         element.appendChild( ingressstatus );
 
         var object = new THREE.CSS3DObject( element );
-        object.position.x = ( ingressinfo[ i + 3 ] * 140 ) - 1330;
-        object.position.y = - ( ingressinfo[ i + 4 ] * 180 ) + 630;
+        object.position.x = ( ingressinfo[ i + 3 ] * 140 ) - 1360;
+        object.position.y = - ( ingressinfo[ i + 4 ] * 180 ) + 1080;
+        object.type= 'ingress'
 
         scene.add( object );
 
         objects.push( object );
 
         var runner = new THREE.Mesh(runnerGeometry, runnerMaterial);
-        runner.position.set(object.position.x+140,object.position.y-55,0);
+        runner.position.set(object.position.x+140,object.position.y-35,0);
+        runner.type='Glingress';
         sceneGl.add(runner);
 
 

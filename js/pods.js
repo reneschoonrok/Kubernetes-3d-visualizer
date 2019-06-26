@@ -42,13 +42,26 @@ function loadinfo() {
     //console.log(podinfo);
   }
 };
+  //clear the scene before filling it again
+  var endcounter = scene.children.length-1;
+      for (var i = endcounter; i >= 0; i--){
+         if (scene.children[i].type== 'pod'){
+           scene.remove(scene.children[i]);
+         }
+   }
 
+   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+      if (sceneGl.children[i].type== 'Glpod'){
+         sceneGl.remove(sceneGl.children[i]);
+      }
+
+   }
 
 
     for ( var i = 0; i < podinfo.length; i += 9 ) {
 
         var element = document.createElement( 'div' );
-        element.className = 'element';
+        element.className = 'podelement';
         element.style.backgroundColor = podinfo[ i + 2 ];
 
         element.addEventListener( 'click', function (event) {
@@ -176,10 +189,11 @@ function loadinfo() {
         };
         element.appendChild( podstatus );
         var object = new THREE.CSS3DObject( element );
-        object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1330;
-        object.position.y = - ( podinfo[ i + 4 ] * 180 ) + 990;
+        object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1360;
+        object.position.y = - ( podinfo[ i + 4 ] * 130 ) + 1030;
         object.type = 'pod';
-        cubecontainer.position.copy(new THREE.Vector3(object.position.x-95,object.position.y-55, 0));//glscene
+        cubecontainer.position.copy(new THREE.Vector3(object.position.x+160,object.position.y-40, 0));//glscene
+        cubecontainer.type='Glpod'
         sceneGl.add(cubecontainer);//glscene
         scene.add( object );
         objects.push( object );

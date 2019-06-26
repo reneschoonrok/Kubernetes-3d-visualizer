@@ -25,7 +25,7 @@ function loadevents() {
     for (var i = 0; i < arrayLength; i++) {
         eventinfo[j] = response1[i];
         eventinfo[j+1] = "-Message: " + response3[i];
-        eventinfo[j+2] = "rgba(56, 124, 52,0.2)"; //background of replicasets
+        eventinfo[j+2] = "rgba(67, 114,183,0.2)"; //background of replicasets
         eventinfo[j+5] = response2[i];
         eventinfo[j+6] = "-Image: " + response5[i];
         //replicaset[j+7] = "-Started at: " + response6[i];
@@ -36,9 +36,18 @@ function loadevents() {
     //console.log(replicaset);
   }
 };
+
+   //clear the scene before filling it again
+   var endcounter = scene.children.length-1;
+      for (var i = endcounter; i >= 0; i--){
+         if (scene.children[i].type== 'event'){
+           scene.remove(scene.children[i]);
+         }
+   }
+
     var currentTime = new Date();
     //currentTime = currentTime.getTime() -  currentTime.getTime() / 1000;
-    currentTime = (currentTime.getTime()-36000);
+    currentTime = (currentTime.getTime()-56000);
     var teller = 0;
     for ( var i = 0; i < eventinfo.length; i += 9 ) {
 
@@ -145,65 +154,74 @@ function loadevents() {
         element.appendChild( podstatus );
 
         var object = new THREE.CSS3DObject( element );
-        object.position.x = ( eventinfo[ i + 3 ] * 140 ) - 1330;
-        object.position.y = - ( eventinfo[ i + 4 ] * 180 ) + 270;
+        object.position.x = ( eventinfo[ i + 3 ] * 140 ) - 1360;
+        object.position.y = - ( eventinfo[ i + 4 ] * 180 ) + 670;
 
-
+        object.type = 'event';
         scene.add( object );
 
         objects.push( object );
         if (eventinfo[ i + 7 ] =='Killing') {
           var objecticon = new THREE.CSS3DSprite(image2.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Pulled') {
           var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Pulling') {
           var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Created') {
           var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Started') {
           var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
 
         if (eventinfo[ i + 7 ] =='Failed') {
           var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Unhealthy') {
           var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='Scheduled') {
           var objecticon = new THREE.CSS3DSprite(image6.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 
         if (eventinfo[ i + 7 ] =='SuccessfulCreate') {
           var objecticon = new THREE.CSS3DSprite(image7.cloneNode());
-          objecticon.position.set(object.position.x-30,object.position.y-55,0);
+          objecticon.position.set(object.position.x+165,object.position.y-35,0);
+          objecticon.type = 'event';
           scene.add(objecticon);
         }
 

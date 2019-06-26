@@ -8,14 +8,14 @@ function loadnodes() {
       var response = JSON.parse(xhttp.responseText);
 
       var response7 = jsonPath(response , "$..metadata.name");
-      //console.log(response7);
+      console.log(response7);
 
       var arrayLength = response7.length;
       var j = 0;
       for (var i = 0; i < arrayLength; i++) {
          nodeinfo[j] = response7[i];
          nodeinfo[j+1] =response7[i];
-         nodeinfo[j+2] = "rgba(36, 61, 114,0.1)"; //nodes background color
+         nodeinfo[j+2] = "rgba(36, 61, 114, 0.3)"; //nodes background color
 
          nodeinfo[j+3] = 5 + (i*3);
          nodeinfo[j+4] = 3 ; //rij links rechts
@@ -25,35 +25,42 @@ function loadnodes() {
    }
 };
 
+  //clear the scene before filling it again
+  var endcounter = scene.children.length-1;
+      for (var i = endcounter; i >= 0; i--){
+         if (scene.children[i].type== 'node'){
+           scene.remove(scene.children[i]);
+         }
+   }
+
+   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+      if (sceneGl.children[i].type== 'node'){
+         sceneGl.remove(sceneGl.children[i]);
+      }
+
+   }
+
    for ( var i = 0; i < nodeinfo.length; i += 9 ) {
       var element = document.createElement( 'div' );
-      element.className = 'element';
+      element.className = 'elementsmall';
       element.style.backgroundColor = nodeinfo[ i + 2 ];
-
-      var number = document.createElement( 'div' );
-      number.className = 'number';
-      number.textContent = nodeinfo[ i + 5 ];
-      element.appendChild( number );
 
       var symbol = document.createElement( 'div' );
       symbol.className = 'symbol';
       symbol.textContent = nodeinfo[ i ];
       element.appendChild( symbol );
 
-      var details = document.createElement( 'div' );
-      details.className = 'details';
-      details.id = nodeinfo[ i ];
-
-      element.appendChild( details );
 
       var object = new THREE.CSS3DObject( element );
-      object.position.x = object.position.x = ( nodeinfo[ i + 3 ] * 140 ) - 1330;
+      object.position.x = object.position.x = ( nodeinfo[ i + 3 ] * 140 ) - 1360;
       object.position.y = - ( nodeinfo[ i + 4 ] * 180 ) + 1350;
+      object.type = 'node';
       scene.add( object );
       objects.push( object );
 
               var runner2 = new THREE.Mesh(runner2Geometry, runner2Material);
-              runner2.position.set(object.position.x+165,object.position.y-45,0);
+              runner2.position.set(object.position.x-165,object.position.y,0);
+              runner2.type='node';
               sceneGl.add(runner2);
 
 

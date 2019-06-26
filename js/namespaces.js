@@ -1,12 +1,41 @@
 function loadnamespaces() {
+
+  //clear the scene before filling it again
+  var endcounter = scene.children.length-1;
+      for (var i = endcounter; i >= 0; i--){
+         if (scene.children[i].type== 'namespace'){
+           scene.remove(scene.children[i]);
+         }
+   }
+
+   //for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+   //   if (sceneGl.children[i].type== 'Glpod'){
+   //      sceneGl.remove(sceneGl.children[i]);
+   //   }
+
+   //}
+
+
+
   for ( var i = 0; i < namespaces.length; i += 6 ) {
      var namespace = document.createElement( 'div' );
      namespace.addEventListener( 'click', function (event) {
          mynamespace = event.currentTarget.childNodes[1].textContent;
-         podinfo.splice(0, podinfo.length)}, false
+         loadinfo();
+         loadingresses();
+         loaddeployments();
+         loadevents();
+         for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+            if (sceneGl.children[i].type== 'namespaceselector'){
+               sceneGl.remove(sceneGl.children[i]);
+            }
+
+         }
+         loadnamespaces();
+         }, false
      );
 
-     namespace.className = 'element';
+     namespace.className = 'elementsmall';
      namespace.style.backgroundColor = namespaces[ i + 2 ];
 
      var number = document.createElement( 'div' );
@@ -24,10 +53,18 @@ function loadnamespaces() {
      namespace.appendChild( details );
 
      var object = new THREE.CSS3DObject( namespace );
-     object.position.x = object.position.x = ( namespaces[ i + 3 ] * 140 ) - 1330;
-     object.position.y = - ( namespaces[ i + 4 ] * 180 ) + 990;
+     object.position.x = object.position.x = ( namespaces[ i + 3 ] * 140 ) - 1360;
+     object.position.y = - ( namespaces[ i + 4 ] * 180 ) + 1100;
      object.type = 'namespace';
      scene.add( object );
      objects.push( object );
+
+     if (mynamespace == namespaces[ i ]) {
+        var runner2 = new THREE.Mesh(runner2Geometry, runner2Material);
+        runner2.position.set(object.position.x-165,object.position.y,0);
+        runner2.type='namespaceselector';
+        sceneGl.add(runner2);
+     }
+
     }
 }
