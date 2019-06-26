@@ -229,14 +229,14 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			}
 
 
-		   var intervalID = window.setInterval(myDeploymentRefresh, 2000);
+		   var intervalID = window.setInterval(myDeploymentRefresh, 4500);
 
 		   function myDeploymentRefresh() {
         	   loaddeployments();
         	   deployment.splice(0, deployment.length)
 		   }
 
-		   var intervalID = window.setInterval(nodesRefresh, 2000);
+		   var intervalID = window.setInterval(nodesRefresh, 5000);
 
 		   function nodesRefresh() {
         	   loadnodes();
@@ -250,7 +250,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
         	   ingressinfo.splice(0, ingressinfo.length)
 		   }
 
-		   //var intervalID = window.setInterval(myNamespaceRefresh, 5000);
+		   //var intervalID = window.setInterval(myNamespaceRefresh, 3000);
 
 		   //function myNamespaceRefresh() {
            //   loadnamespaces();
@@ -268,7 +268,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 				eventinfo.splice(0, eventinfo.length)
 			}
 
-			var intervalID = window.setInterval(myRefreshIngress,5000);
+			var intervalID = window.setInterval(myRefreshIngress,20000);
 			function myRefreshIngress() {
     		   if (showingress.checked){
 			      for (var i = scene.children.length-1; i > -1; i -= 1){

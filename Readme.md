@@ -6,7 +6,7 @@ You can also interact with the cluster: delete pods, increase/decrease replicas 
 
 Also working with Minikube. <br/>
 
-![](/k8s6.gif)
+![](/k8s7.gif)
 
 ## Prerequisites
 
@@ -16,13 +16,6 @@ Also working with Minikube. <br/>
  ("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp") <br/>
 
 then goto localhost:80 If your chrome is correctly started (see above) it should work. <br/>
-
-### Getting Started
-
-Todo:  <br/>
--Add services to rendering <br/>
--Autodiscovery option for namespaces (make this an option) <br/>
--Clean up code <br/>
 
 I am not an expert on JS or CSS, but I do like to build things.
 
