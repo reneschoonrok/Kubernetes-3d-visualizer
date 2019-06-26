@@ -89,11 +89,6 @@
 			var info = [];
 			var clock = new THREE.Clock();
 
-			var image = document.createElement('img');
-			image.src = './img/kubernetesword.png';
-	     	var objectlogo = new THREE.CSS3DSprite(image.cloneNode());
-
-
 	     	var image2 = document.createElement('img');
 	     	image2.src = './img/killed.png';
 
@@ -230,13 +225,8 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			ingresstexture.update(1000 * delta);
 			nodetexture.update(1000 * delta);
 			logonodetexture.update(1000 * delta);
-
-			      scene.add(objectlogo);
-
-			      objects.push(objectlogo);
-			      //objects.push(mycssObject);
-			      rendererGl.render(sceneGl, camera);
-				renderer.render( scene, camera );
+			rendererGl.render(sceneGl, camera);
+			renderer.render( scene, camera );
 			}
 
 
@@ -254,7 +244,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
            //   namespaces.splice(0, namespace.length)
 		   //}
 
-			var intervalID = window.setInterval(myRefresh, 3000);
+			var intervalID = window.setInterval(myRefresh, 1500);
 
 			function myRefresh() {
 		
