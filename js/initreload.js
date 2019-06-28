@@ -11,26 +11,35 @@ function init() {
 
 			  }, false);
 
-    var boxGeom = new THREE.CubeGeometry(200, 200, 1);//glscene
+    var boxGeom = new THREE.CubeGeometry(200, 200, 0.1);//glscene
+    var boxGeomdocker = new THREE.CubeGeometry(256, 256, 5.0);//glscene
     var texture = new THREE.TextureLoader().load( './img/logoleeg3.png' );//glscene
 
 	var material = new THREE.MeshBasicMaterial( { map: texture, opacity: 0.7} );//glscene
 	material.transparent = true;
 
-	var logoTexture = new THREE.ImageUtils.loadTexture( './img/wheel7.png' );
-	logonodetexture = new TextureAnimator( logoTexture, 4, 1, 4, 500 ); // texture, #horiz, #vert, #total, duration.
+	var logoTexture = new THREE.ImageUtils.loadTexture( './img/Kubernetes2.png' );
+	logonodetexture = new TextureAnimator( logoTexture, 1, 1, 1, 1000 ); // texture, #horiz, #vert, #total, duration.
 	var logoMaterial = new THREE.MeshBasicMaterial( { map: logoTexture, side:THREE.DoubleSide } );
 	logoMaterial.transparent = true;
+
+	var dockerTexture = new THREE.ImageUtils.loadTexture( './img/Dockerlogo7.png' );
+    	dockernodetexture = new TextureAnimator( dockerTexture, 8, 1, 8, 200 ); // texture, #horiz, #vert, #total, duration.
+    	var dockerMaterial = new THREE.MeshBasicMaterial( { map: dockerTexture, side:THREE.DoubleSide } );
+    	dockerMaterial.transparent = false;
 
 
 	cube = new THREE.Mesh( boxGeom, logoMaterial );//glscene
 
-    cube.position.copy(new THREE.Vector3(-1060, 1080, 0));//glscene
+    cube.position.copy(new THREE.Vector3(-1030, 1000, 0));//glscene
+
+	cubedocker = new THREE.Mesh( boxGeomdocker, dockerMaterial );//glscene
+
+    cubedocker.position.copy(new THREE.Vector3(500, 970, 0));//glscene
 
 
-
-    var boxGeomlogo2 = new THREE.CubeGeometry(1700, 250, 10);//glscene
-    var texturelogo2 = new THREE.TextureLoader().load( './img/kubernetesword.png' );//glscene
+    var boxGeomlogo2 = new THREE.CubeGeometry(1200, 200, 0.1);//glscene
+    var texturelogo2 = new THREE.TextureLoader().load( './img/kubernetesword1.png' );//glscene
 
 	var materiallogo2 = new THREE.MeshBasicMaterial( { map: texturelogo2, opacity: 0.7} );//glscene
 	materiallogo2.transparent = false;
@@ -39,11 +48,13 @@ function init() {
 
 	cube44 = new THREE.Mesh( boxGeomlogo2, materiallogo2 );//glscene
 
-    cube44.position.copy(new THREE.Vector3(0, 1080, 0));//glscene
+    cube44.position.copy(new THREE.Vector3(-260, 1000, 0));//glscene
     cube44.type='logo';
-    cube.type='logo'
+    cube.type='logo';
+    cubedocker.type='logo';
     sceneGl.add(cube44);//glscene
     sceneGl.add(cube);//glscene
+    sceneGl.add(cubedocker);//glscene
 
     rendererGl = new THREE.WebGLRenderer({alpha:true});//glscene
     rendererGl.setClearColor(0x00ff00, 0.0);//glscene

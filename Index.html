@@ -78,7 +78,6 @@
 			var controls;
 			var mesh;
 			var bcolorchanger = 0;
-			var rotateswitch = 1;
 
 			var objects = [];
 			var targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [], eventinfo: [] };
@@ -223,6 +222,8 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			var delta = clock.getDelta();
 			ingresstexture.update(1000 * delta);
 			nodetexture.update(1000 * delta);
+           dockernodetexture.update(1000 * delta);
+			cube.rotation.z -=0.005;
 			//logonodetexture.update(1000 * delta);
 			rendererGl.render(sceneGl, camera);
 			renderer.render( scene, camera );
