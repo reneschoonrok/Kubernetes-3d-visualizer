@@ -4,6 +4,10 @@ This project renders your Kubernetes cluster in 3d: (Nodes, Pods, Namespaces, De
 
 You can also interact with the cluster: delete pods, increase/decrease replicas and open specs. <br/>
 
+View pod logs and details with a single click. <br/>
+
+View events and see what the cluster orchestration is doing. <br/>
+
 Also working with Minikube. <br/>
 
 ![](/k8s8.gif)
