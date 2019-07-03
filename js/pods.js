@@ -1,6 +1,13 @@
 function loadinfo() {
   var xhttp = new XMLHttpRequest();
+
+
+
+
   xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/", true);
+    //xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+    //xhttp.setRequestHeader('Content-type', 'application/ecmascript');
+    //xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
   xhttp.send();
   xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {

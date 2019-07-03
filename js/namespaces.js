@@ -17,7 +17,7 @@ function loadnamespaces() {
    }
 
    for (var i = sceneGl.children.length-1; i > -1; i -= 1){
-      if (sceneGl.children[i].type== 'Glpod'){
+      if (sceneGl.children[i].type== 'namespaceselector'){
          sceneGl.remove(sceneGl.children[i]);
       }
 
