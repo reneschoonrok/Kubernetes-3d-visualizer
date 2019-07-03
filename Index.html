@@ -120,7 +120,7 @@
 	runner.position.set(-100,25,0);
 
 	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/wheel3.png' );
-	nodetexture = new TextureAnimator( runner2Texture, 4, 1, 4, 200 ); // texture, #horiz, #vert, #total, duration.
+	nodetexture = new TextureAnimator( runner2Texture, 4, 1, 4, 100 ); // texture, #horiz, #vert, #total, duration.
 	var runner2Material = new THREE.MeshBasicMaterial( { map: runner2Texture, side:THREE.DoubleSide } );
 	runner2Material.transparent = true;
 	var runner2Geometry = new THREE.PlaneGeometry(50,50, 1, 1);
