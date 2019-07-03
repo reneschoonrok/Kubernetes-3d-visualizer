@@ -16,12 +16,12 @@ function loadnamespaces() {
          }
    }
 
-   //for (var i = sceneGl.children.length-1; i > -1; i -= 1){
-   //   if (sceneGl.children[i].type== 'Glpod'){
-   //      sceneGl.remove(sceneGl.children[i]);
-   //   }
+   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+      if (sceneGl.children[i].type== 'Glpod'){
+         sceneGl.remove(sceneGl.children[i]);
+      }
 
-   //}
+   }
 
 
 
