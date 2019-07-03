@@ -1,12 +1,13 @@
 function init() {
 
+    document.getElementById('customnamespace').value = 'custom';
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
     camera.position.z = 4000;
 
     scene = new THREE.Scene();
     sceneGl = new THREE.Scene(); //glscene
 
- image.addEventListener('load', function(event) {
+    image.addEventListener('load', function(event) {
 
 
 			  }, false);
