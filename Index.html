@@ -22,7 +22,7 @@
 		<script src="js/ingresses.js"></script>
 		<script src="js/jquery-2.2.4.min.js"></script>
 
-		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress. <input type="checkbox" id="httpsingress" value="true" class="button button4" checked>https alb<br></div>
+		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress. <input type="checkbox" id="httpsingress" value="true" class="button button4" checked>use https alb.   Custom namespace: <input type="text" id="customnamespace" placeholder="custom"><br></div>
 
 
 		<div id="container"></div>
@@ -120,7 +120,7 @@
 	runner.position.set(-100,25,0);
 
 	var runner2Texture = new THREE.ImageUtils.loadTexture( './img/wheel3.png' );
-	nodetexture = new TextureAnimator( runner2Texture, 4, 1, 4, 75 ); // texture, #horiz, #vert, #total, duration.
+	nodetexture = new TextureAnimator( runner2Texture, 4, 1, 4, 200 ); // texture, #horiz, #vert, #total, duration.
 	var runner2Material = new THREE.MeshBasicMaterial( { map: runner2Texture, side:THREE.DoubleSide } );
 	runner2Material.transparent = true;
 	var runner2Geometry = new THREE.PlaneGeometry(50,50, 1, 1);
@@ -230,7 +230,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			}
 
 
-		   var intervalID = window.setInterval(myDeploymentRefresh, 4500);
+		   var intervalID = window.setInterval(myDeploymentRefresh, 6000);
 
 		   function myDeploymentRefresh() {
         	   loaddeployments();
@@ -251,14 +251,14 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
         	   ingressinfo.splice(0, ingressinfo.length)
 		   }
 
-		   //var intervalID = window.setInterval(myNamespaceRefresh, 3000);
+		   var intervalID = window.setInterval(myNamespaceRefresh, 1500);
 
-		   //function myNamespaceRefresh() {
-           //   loadnamespaces();
-           //   namespaces.splice(0, namespace.length)
-		   //}
+		   function myNamespaceRefresh() {
+              loadnamespaces();
+              //namespaces.splice(0, namespaces.length)
+		   }
 
-			var intervalID = window.setInterval(myRefresh, 1500);
+			var intervalID = window.setInterval(myRefresh, 2000);
 
 			function myRefresh() {
 				loadinfo();
@@ -269,7 +269,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 				eventinfo.splice(0, eventinfo.length)
 			}
 
-			var intervalID = window.setInterval(myRefreshIngress,20000);
+			var intervalID = window.setInterval(myRefreshIngress,30000);
 			function myRefreshIngress() {
     		   if (showingress.checked){
 			      for (var i = scene.children.length-1; i > -1; i -= 1){

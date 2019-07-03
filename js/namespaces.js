@@ -1,5 +1,13 @@
 function loadnamespaces() {
 
+//"tst", "namespace", "rgba(0,127,127,0.2)", 14, 2, " "
+ namespaces[24]=document.getElementById('customnamespace').value;
+ namespaces[25]="namespace";
+ namespaces[26]="rgba(0,127,127,0.2)";
+ namespaces[27]=17;
+ namespaces[28]=2;
+ namespaces[29]=" ";
+
   //clear the scene before filling it again
   var endcounter = scene.children.length-1;
       for (var i = endcounter; i >= 0; i--){
