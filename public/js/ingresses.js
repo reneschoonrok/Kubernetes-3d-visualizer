@@ -1,15 +1,16 @@
 function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/namespaces/dev/ingresses/
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/", true);
+    xhttp.open('GET', '/getingress?mynamespace='+mynamespace, true);
+  //xhttp.open("GET", "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/", true);
   xhttp.send();
   xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
 
     var response = JSON.parse(xhttp.responseText);
     //console.log(response);
-    var response1 = jsonPath(response , "$.items[*].metadata.name");
-    var response2 = jsonPath(response , "$.items[*].spec.rules[0].host");
-    ingressurls = jsonPath(response , "$.items[*].spec.rules[0].host");
+    var response1 = jsonPath(response , "$..items[*].metadata.name");
+    var response2 = jsonPath(response , "$..items[*].spec.rules[0].host");
+    ingressurls = jsonPath(response , "$..items[*].spec.rules[0].host");
     var response3 = jsonPath(response , " ");
     var response4 = jsonPath(response , " ");
     var response5 = jsonPath(response , " ");
@@ -70,16 +71,16 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
                     //console.log(response);
                     info[0] = "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/" + jsonPath(response , "$.metadata.name");
                     if (httpsingress.checked){
-                       info[1] = "https://"+jsonPath(response , '$.spec.rules[0].host');
+                       info[1] = "https://"+jsonPath(response , '$..spec.rules[0].host');
                     } else {
-                       info[1] = "http://"+jsonPath(response , '$.spec.rules[0].host');
+                       info[1] = "http://"+jsonPath(response , '$..spec.rules[0].host');
                     };
 
-                    var response5 = jsonPath(response , "$.spec.containers[*].image");
+                    var response5 = jsonPath(response , "$..spec.containers[*].image");
 
                     areatext1.value= '';
-                    areatext1.value+='Ingressname     : ' + jsonPath(response , "$.metadata.name")+ "\r\n";
-                    areatext1.value+='Url             : ' + jsonPath(response , '$.spec.rules[0].host')+ "\r\n";
+                    areatext1.value+='Ingressname     : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
+                    areatext1.value+='Url             : ' + jsonPath(response , '$..spec.rules[0].host')+ "\r\n";
                     //areatext1.value+='Scheme          : ' + jsonPath(response , "$.metadata.annotations[2]")+ "\r\n";
                     //areatext1.value+='Target-type     : ' + jsonPath(response , "$.metadata.annotations[3]")+ "\r\n";
                     //areatext1.value+='ingress class   : ' + jsonPath(response , "$.metadata.annotations[4]")+ "\r\n";
@@ -87,7 +88,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
 
                     //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
                     //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                    detail10.innerHTML = 'Open spec';
+                    //detail10.innerHTML = 'Open spec';
                     detail11.innerHTML = '';
                     detail13.innerHTML = 'Open url';
                     detail14.innerHTML = '';

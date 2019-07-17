@@ -72,10 +72,10 @@ function loadreplicasets() {
                     //var response2 = jsonPath(response , "$.status.phase");
                     detail6.innerHTML = '';
                     detail7.innerHTML = '';
-                    detail8.innerHTML = 'Add replica';
-                    detail9.innerHTML = 'Reduce replica';
+                    //detail8.innerHTML = 'Add replica';
+                    //detail9.innerHTML = 'Reduce replica';
                     detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                    detail10.innerHTML = 'Open spec';
+                    //detail10.innerHTML = 'Open spec';
                     detail11.innerHTML = ''; //don't delete replicasets from here
                     detail13.innerHTML = ' ';
                     detail14.innerHTML = ' ';

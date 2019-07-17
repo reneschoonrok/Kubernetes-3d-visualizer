@@ -13,6 +13,7 @@ function init() {
 			  }, false);
 
     var boxGeom = new THREE.CubeGeometry(200, 200, 0.1);//glscene
+    //var boxNNGeom = new THREE.CubeGeometry(200, 200, 0.02);//glscene
     var boxGeomdocker = new THREE.CubeGeometry(256, 256, 5.0);//glscene
     var texture = new THREE.TextureLoader().load( './img/logoleeg3.png' );//glscene
 
@@ -24,6 +25,12 @@ function init() {
 	var logoMaterial = new THREE.MeshBasicMaterial( { map: logoTexture, side:THREE.DoubleSide } );
 	logoMaterial.transparent = true;
 
+    //var NNTexture = new THREE.ImageUtils.loadTexture( './img/NN.png' );
+   // NNnodetexture = new TextureAnimator( NNTexture, 1, 1, 1, 1000 ); // texture, #horiz, #vert, #total, duration.
+   // var NNMaterial = new THREE.MeshBasicMaterial( { map: NNTexture, side:THREE.DoubleSide } );
+    //NNMaterial.transparent = true;
+
+
 	var dockerTexture = new THREE.ImageUtils.loadTexture( './img/Dockerlogo7.png' );
     	dockernodetexture = new TextureAnimator( dockerTexture, 8, 1, 8, 200 ); // texture, #horiz, #vert, #total, duration.
     	var dockerMaterial = new THREE.MeshBasicMaterial( { map: dockerTexture, side:THREE.DoubleSide } );
@@ -33,6 +40,10 @@ function init() {
 	cube = new THREE.Mesh( boxGeom, logoMaterial );//glscene
 
     cube.position.copy(new THREE.Vector3(-1030, 1000, 0));//glscene
+
+    //NNcube = new THREE.Mesh( boxNNGeom, NNMaterial );//glscene
+
+    //NNcube.position.copy(new THREE.Vector3(830, 1000, 0));//glscene
 
 	cubedocker = new THREE.Mesh( boxGeomdocker, dockerMaterial );//glscene
 
@@ -52,9 +63,11 @@ function init() {
     cube44.position.copy(new THREE.Vector3(-260, 1000, 0));//glscene
     cube44.type='logo';
     cube.type='logo';
+    //NNcube.type='logo';
     cubedocker.type='logo';
     sceneGl.add(cube44);//glscene
     sceneGl.add(cube);//glscene
+    //sceneGl.add(NNcube);//glscene
     sceneGl.add(cubedocker);//glscene
 
     rendererGl = new THREE.WebGLRenderer({alpha:true});//glscene
@@ -98,7 +111,7 @@ function init() {
                 {
                    var deleteobject = info[0];
                    var xhttp = new XMLHttpRequest();
-                   xhttp.open("DELETE", deleteobject, true);
+                    xhttp.open('GET', '/deletepod?mynamespace='+mynamespace+'&podname='+info[0]+'&myauthtoken='+myauthtoken, true);
                    xhttp.send();
                 }
     }, false );

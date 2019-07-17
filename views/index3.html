@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Button to nock node.js</title>
+  </head>
+  <body>
+    <form action="/api" method="GET">
+      <button>Call server</button>
+    </form>
+	<form action="/pods" method="GET">
+      <button>Call server2</button>
+    </form>
+  <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == XMLHttpRequest.DONE) {
+             // var response = JSON.parse(xhttp.responseText);
+              var response = xhttp.responseText;
+              alert(response);
+          }
+      };
+
+      xhttp.open('GET', '/getingress?mynamespace=dev', true);
+      xhttp.send(null);
+  </script>
+</html>

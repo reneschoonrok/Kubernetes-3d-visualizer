@@ -1,13 +1,8 @@
 function loadinfo() {
+
   var xhttp = new XMLHttpRequest();
-
-
-
-
-  xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/", true);
-    //xhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-    //xhttp.setRequestHeader('Content-type', 'application/ecmascript');
-    //xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+  xhttp.open('GET', '/pods?mynamespace='+mynamespace, true);
+  //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/", true);
   xhttp.send();
   xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -73,35 +68,36 @@ function loadinfo() {
 
         element.addEventListener( 'click', function (event) {
              var xhttp = new XMLHttpRequest();
-                        xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
+                        xhttp.open('GET', '/poddetail?mynamespace='+mynamespace+'&mypoddetail='+event.currentTarget.childNodes[2].id, true);
+                        //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
                         xhttp.send();
                         xhttp.onreadystatechange = function() {
                             if (this.readyState == 4 && this.status == 200) {
                                 var response = JSON.parse(xhttp.responseText);
                                 //console.log(response);
-                                info[0] = "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/" + jsonPath(response , "$.metadata.name");
+                                info[0] = jsonPath(response , "$..metadata.name");
 
                                 var response5 = jsonPath(response , "$.spec.containers[*].image");
 
                                 areatext1.value= '';
-                                areatext1.value+='Podname         : ' + jsonPath(response , "$.metadata.name")+ "\r\n";
-                                areatext1.value+='Pod IP          : ' + jsonPath(response , "$.status.podIP")+ "\r\n";
-                                areatext1.value+='Podstatus       : ' + jsonPath(response , "$.status.phase")+ "\r\n";
-                                areatext1.value+='Pod starttime   : ' + jsonPath(response , "$.status.startTime")+ "\r\n";
-                                areatext1.value+='Images          : ' + jsonPath(response , "$.spec.containers[*].image")+ "\r\n";
+                                areatext1.value+='Podname         : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
+                                areatext1.value+='Pod IP          : ' + jsonPath(response , "$..status.podIP")+ "\r\n";
+                                areatext1.value+='Podstatus       : ' + jsonPath(response , "$..status.phase")+ "\r\n";
+                                areatext1.value+='Pod starttime   : ' + jsonPath(response , "$..status.startTime")+ "\r\n";
+                                areatext1.value+='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
                                 areatext1.value+='Containers #    : ' + response5.length+ "\r\n";
-                                areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$.status.containerStatuses[*].restartCount")+ "\r\n";
-                                areatext1.value+='Containers ready: ' + jsonPath(response , "$.status.containerStatuses[*].ready")+ "\r\n";
-                                areatext1.value+='Container ports : ' + jsonPath(response , "$.spec.containers[*].ports[0].containerPort")+ "\r\n";
-                                areatext1.value+='cpu requests    : ' + jsonPath(response , "$.spec.containers[*].resources.requests.cpu")+ "\r\n";
-                                areatext1.value+='memory requests : ' + jsonPath(response , "$.spec.containers[*].resources.requests.memory")+ "\r\n";
-                                areatext1.value+='cpu limits      : ' + jsonPath(response , "$.spec.containers[*].resources.limits.cpu")+ "\r\n";
-                                areatext1.value+='memory limits   : ' + jsonPath(response , "$.spec.containers[*].resources.limits.memory")+ "\r\n";
+                                areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
+                                areatext1.value+='Containers ready: ' + jsonPath(response , "$..status.containerStatuses[*].ready")+ "\r\n";
+                                areatext1.value+='Container ports : ' + jsonPath(response , "$..spec.containers[*].ports[0].containerPort")+ "\r\n";
+                                areatext1.value+='cpu requests    : ' + jsonPath(response , "$..spec.containers[*].resources.requests.cpu")+ "\r\n";
+                                areatext1.value+='memory requests : ' + jsonPath(response , "$..spec.containers[*].resources.requests.memory")+ "\r\n";
+                                areatext1.value+='cpu limits      : ' + jsonPath(response , "$..spec.containers[*].resources.limits.cpu")+ "\r\n";
+                                areatext1.value+='memory limits   : ' + jsonPath(response , "$..spec.containers[*].resources.limits.memory")+ "\r\n";
 
 
                                 //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
                                 //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                                detail10.innerHTML = 'Open spec';
+                                //detail10.innerHTML = 'Open spec';
                                 detail11.innerHTML = 'Delete pod';
                                 detail13.innerHTML = '';
                                 detail14.innerHTML = '';
@@ -112,12 +108,19 @@ function loadinfo() {
 
         element.addEventListener( 'contextmenu', function (event) {
                      var xhttp = new XMLHttpRequest();
-                                xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
+                                xhttp.open('GET', '/podlogs?mynamespace='+mynamespace+'&mypoddetail='+event.currentTarget.childNodes[2].id+'&myauthtoken='+myauthtoken, true);
+                                //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
                                 xhttp.send();
                                 xhttp.onreadystatechange = function() {
                                     if (this.readyState == 4 && this.status == 200) {
-                                        var response = xhttp.responseText;
-                                        areatext.value += response
+                                        var response = JSON.parse(xhttp.responseText);
+                                        var responsestr = response.body.split("\n");
+                                        for (var i = 0; i < responsestr.length; i++) {
+                                            areatext.value +=responsestr[i];
+                                            areatext.value +="\r\n";
+                                        }
+
+                                        //areatext.value += response
                                         areatext.scrollTop = areatext.scrollHeight;
 
 

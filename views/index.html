@@ -4,7 +4,8 @@
 		<title>Kubernetes-3d-visualizer</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+
 	</head>
 	<body>
 	    <script src="js/jsonpath-0.8.0.js"></script>
@@ -22,8 +23,23 @@
 		<script src="js/ingresses.js"></script>
 		<script src="js/jquery-2.2.4.min.js"></script>
 
-		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok" target="_blank" rel="noopener">https://github.com/reneschoonrok</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress. <input type="checkbox" id="httpsingress" value="true" class="button button4" checked>use https alb.   Custom namespace: <input type="text" id="customnamespace" placeholder="custom"><br></div>
+		<div id="info"><a href="" target="_blank" rel="noopener"></a> Kubernetes-3d-visualizer  <a href="https://github.com/reneschoonrok/Kubernetes-3d-visualizer" target="_blank" rel="noopener">Github</a>. <input type="checkbox" id="showingress" value="true" class="button button4" checked>Show Ingress. <input type="checkbox" id="httpsingress" value="true" class="button button4" checked>use https alb.   Custom namespace: <input type="text" id="customnamespace" placeholder="custom"> <button type="button" onclick="sendToken()">Submit token to see logs and delete pods</button> <input type="password" id="mytoken" placeholder="enter token"><br></div>
+		<script>
+		function sendToken() {
+          //var xhttp = new XMLHttpRequest();
+          //xhttp.onreadystatechange = function() {
+          //   if (xhttp.readyState == XMLHttpRequest.DONE) {
+          //      var response = xhttp.responseText;
+          //      alert(response);
+          //   }
+           //};
 
+           //xhttp.open('GET', '/token?mytoken='+document.getElementById('mytoken').value, true);
+           //xhttp.send(null);
+           myauthtoken = document.getElementById('mytoken').value;
+			//document.getElementById('mytoken').value = 'token submitted';
+         }
+        </script>
 
 		<div id="container"></div>
 		<div id="menu">
@@ -83,7 +99,8 @@
 			var targets = { podinfo: [],  nodeinfo: [], resourcetypes: [],  namespaces: [], replicaset: [], deployment: [], eventinfo: [] };
 			var longerlivables = { ingressinfo: []};
 			var image = document.createElement( 'img' );
-			var mynamespace = 'kube-system';
+			var mynamespace = 'dev';
+			var myauthtoken = 'empty'
 			var info = [];
 			var clock = new THREE.Clock();
 
@@ -224,6 +241,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			nodetexture.update(1000 * delta);
            dockernodetexture.update(1000 * delta);
 			cube.rotation.z -=0.005;
+			//NNcube.rotation.z -=0.005;
 			//logonodetexture.update(1000 * delta);
 			rendererGl.render(sceneGl, camera);
 			renderer.render( scene, camera );
@@ -281,7 +299,7 @@ function TextureAnimator(texture, tilesHoriz, tilesVert, numTiles, tileDispDurat
 			      var xpos = -33;
 			      for ( var i = 0; i < ingressurls.length; i += 1 ) {
 			      if (httpsingress.checked){
-			         create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -200, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
+			        create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -200, 0),  new THREE.Vector3(0, 0, 0), 'https://'+ingressurls[i]);
 				  }
 				  else {
 				     create3dPage( 400, 600, new THREE.Vector3(-627+xpos, -200, 0),  new THREE.Vector3(0, 0, 0), 'http://'+ingressurls[i]);

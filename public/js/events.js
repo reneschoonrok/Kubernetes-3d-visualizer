@@ -1,6 +1,7 @@
 function loadevents() {
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/events/", true);
+    xhttp.open('GET', '/myevents?mynamespace='+mynamespace, true);
+  //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/events/", true);
 
   //http://localhost:8001/api/v1/namespaces/default/events?limit=5
 
@@ -10,10 +11,10 @@ function loadevents() {
 
     var response = JSON.parse(xhttp.responseText);
     //console.log(response);
-    var response2 = jsonPath(response , "$.items[*].metadata.name");
-    var response1 = jsonPath(response , "$.items[*].lastTimestamp");
-    var response3 = jsonPath(response , "$.items[*].message");
-    var response4 = jsonPath(response , "$.items[*].reason");
+    var response2 = jsonPath(response , "$..items[*].metadata.name");
+    var response1 = jsonPath(response , "$..items[*].lastTimestamp");
+    var response3 = jsonPath(response , "$..items[*].message");
+    var response4 = jsonPath(response , "$..items[*].reason");
     var response5 = jsonPath(response , " ");
     var response6 = jsonPath(response , " ");
     var response7 = jsonPath(response , " ");
@@ -75,7 +76,7 @@ function loadevents() {
                     //console.log(response);
                     info[0] = "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/events/" + jsonPath(response , "$.metadata.name");
                     detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                    detail10.innerHTML = 'Open spec';
+                    //detail10.innerHTML = 'Open spec';
                     detail11.innerHTML = ''; //don't delete replicasets from here
                     detail13.innerHTML = ' ';
                     detail14.innerHTML = ' ';
