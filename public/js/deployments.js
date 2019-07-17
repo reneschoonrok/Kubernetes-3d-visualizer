@@ -1,15 +1,16 @@
 function loaddeployments() {
    var xhttp = new XMLHttpRequest();
-   xhttp.open("GET", "http://localhost:8001/apis/apps/v1/namespaces/"+mynamespace+"/deployments/", true);
+    xhttp.open('GET', '/deployments?mynamespace='+mynamespace, true);
+   //xhttp.open("GET", "http://localhost:8001/apis/apps/v1/namespaces/"+mynamespace+"/deployments/", true);
    xhttp.send();
    xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
 
          var response = JSON.parse(xhttp.responseText);
          //console.log(response);
-         var response1 = jsonPath(response , "$.items[*].metadata.name");
-         var response2 = jsonPath(response , "$.items[*].spec.replicas");
-         var response3 = jsonPath(response , "$.items[*].status.readyReplicas");
+         var response1 = jsonPath(response , "$..items[*].metadata.name");
+         var response2 = jsonPath(response , "$..items[*].spec.replicas");
+         var response3 = jsonPath(response , "$..items[*].status.readyReplicas");
          var response4 = jsonPath(response , " ");
          var response5 = jsonPath(response , " ");
          var response6 = jsonPath(response , " ");
@@ -64,7 +65,7 @@ function loaddeployments() {
                areatext1.value+='Readystatus : ' + jsonPath(response , "$.status.readyReplicas")+ "\r\n";
                areatext1.value+='Version     : ' + jsonPath(response , "$.metadata.labels.version")+ "\r\n";
 
-               detail10.innerHTML = 'Open spec';
+               //detail10.innerHTML = 'Open spec';
                detail11.innerHTML = ''; //dont delete deployments from here
                detail13.innerHTML = 'Add one replica';
                detail14.innerHTML = 'Reduce one replica';

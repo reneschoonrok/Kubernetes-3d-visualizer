@@ -1,0 +1,24 @@
+{
+  "name": "k8s3dnode",
+  "version": "1.0.0",
+  "description": "k8s3dnode",
+  "main": "./router/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reneschoonrok/kubernetes-3d-visualizer-nodejs.git"
+  },
+  "author": "reneschoonrok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reneschoonrok/kubernetes-3d-visualizer-nodejs/issues"
+  },
+  "homepage": "https://github.com/reneschoonrok/kubernetes-3d-visualizer-nodejs#readme",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "kubernetes-client": "^8.3.1"
+  }
+}

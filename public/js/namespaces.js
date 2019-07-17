@@ -30,7 +30,7 @@ function loadnamespaces() {
      namespace.addEventListener( 'click', function (event) {
          mynamespace = event.currentTarget.childNodes[1].textContent;
          loadinfo();
-         loadingresses();
+         //loadingresses();
          loaddeployments();
          loadevents();
          for (var i = sceneGl.children.length-1; i > -1; i -= 1){

@@ -1,6 +1,7 @@
 function loadnodes() {
    var xhttp = new XMLHttpRequest();
-   xhttp.open("GET", "http://localhost:8001/api/v1/nodes/", true);
+    xhttp.open('GET', '/nodes?mynamespace='+mynamespace, true);
+   //xhttp.open("GET", "http://localhost:8001/api/v1/nodes/", true);
    xhttp.send();
    xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {

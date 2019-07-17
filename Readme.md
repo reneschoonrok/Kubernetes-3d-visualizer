@@ -1,31 +1,31 @@
 # Kubernetes-3d-vizualizer
 
-This project renders your Kubernetes cluster in 3d: (Nodes, Pods, Namespaces, Deployments, Replicasets).  <br/>
-
-You can also interact with the cluster: delete pods, increase/decrease replicas and open specs. <br/>
-
+Interact with your kubernetes cluster in style. <br/>
 View pod logs and details with a single click. <br/>
-
-View events and see what the cluster orchestration is doing. <br/>
+See what the cluster is doing by seeing events happen without typing commands. <br/>
+Delete pods and watch the cluster orchestration do its work. <br/>
 
 Also working with Minikube. <br/>
 
 ![](/k8s8.gif)
 
-## Prerequisites
+## Prerequisites <br/>
+This new version is based on nodejs and everything is done from within the pod. <br/>
+Make sure the pod has enough rights to read other pods etc. (it will use the pod serviceaccount rights ) <br/>
+I will give example files later on. <br/>
 
--Make sure you have kubectl API access via http://localhost:8001 (The command 'kubectl proxy' works in most cases). Atleast namespace rights needed.<br/>
+To use: run a pod with: reneschoonrok/kubernetes-3d-visualizer:latest (based on node10-alpine) <br/>
+Start the pod with an env variable: 'TOKEN' and a value and use that value in the app to view logs and delete pods. <br/>
 
--Run chrome with some extra flags to prevent CORS errors. Otherwise it will not show things. <br/>
- ("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir=~/chromeTemp") <br/>
-
-then goto localhost:80 If your chrome is correctly started (see above) it should work. <br/>
-
-I am not an expert on JS or CSS, but I do like to build things.
+Do not use on production systems yet!
+I am not an expert on nodeJS or CSS, but I do like to build things.
 
 #### Credits to..
 Threejs as this app makes use of:
 https://threejs.org/docs/#examples/renderers/CSS3DRenderer
+
+Godaddy kubernetes-client:
+https://github.com/godaddy/kubernetes-client
 
 Based on an example from:
 https://threejs.org/examples/css3d_periodictable.html

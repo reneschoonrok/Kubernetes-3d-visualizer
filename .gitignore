@@ -3,3 +3,4 @@
 .xml
 chrome.bat
 ~/*
+node_modules/*
