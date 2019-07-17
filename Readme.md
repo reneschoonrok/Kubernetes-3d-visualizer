@@ -19,10 +19,10 @@ Minikube instructions: <br/>
 kubectl create deployment k8s3d --image=reneschoonrok/kubernetes-3d-visualizer:latest <br/>
 kubectl expose deployment k8s3d --type=LoadBalancer --port=80 <br/>
 minikube service k8s3d <br/>
-
-Cleanup:
-kubectl delete service k8s3d
-kubectl delete deployment k8s3d
+<br/>
+Cleanup: <br/>
+kubectl delete service k8s3d <br/>
+kubectl delete deployment k8s3d <br/>
  <br/>
 This should make the app available in your browser and you should see pods if you select a namespace where serviceacount has rights on. <br/>
 If you use deployment yaml then you can add an env var: 'TOKEN' = <a value>. This can give access to logs and delete pods. <br/>
