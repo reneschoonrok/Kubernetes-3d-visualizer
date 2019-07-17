@@ -54,12 +54,7 @@ async function getdelete (namespace_name, mypodname, myauthtoken) {
 async function getpoddetails (namespace_name, poddetails_name) {
     try {
         //console.log(namespace_name);
-        let pods = await client.api.v1.namespaces(namespace_name).pods(poddetails_name).get({
-            qs: {
-                tailLines: 20,
-                pretty: true
-            }
-        })
+        let pods = await client.api.v1.namespaces(namespace_name).pods(poddetails_name).get()
 
         return(pods);
     } catch (err) {
@@ -74,8 +69,12 @@ async function getpodlogs (namespace_name, poddetails_name, myauthtoken) {
         //console.log(namespace_name);
         //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
 
-        let pods = await client.api.v1.namespaces(namespace_name).pods(poddetails_name).log.get()
-
+        let pods = await client.api.v1.namespaces(namespace_name).pods(poddetails_name).log.get({
+              qs: {
+                  tailLines: 20,
+                  //pretty: true
+              }
+          })
         return(pods);
       } catch (err) {
         console.error('Error: ', err)
